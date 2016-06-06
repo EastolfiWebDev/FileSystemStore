@@ -1,0 +1,10 @@
+site_name: Mongo Portable
+repo_url: https://github.com/EastolfiWebDev/FileSystemStore
+site_author: Eduardo Astolfi
+copyright: 2016 - Eduardo Astolfi
+
+docs_dir: api
+
+pages:
+    - 'Introduction': 'index.md'
+    - 'File System Store': 'FileSystemStore.md'
