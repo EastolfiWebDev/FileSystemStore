@@ -23,6 +23,7 @@
     "test": "test"
   },
   "dependencies": {
+    "file-system": "2.2.1",
     "lodash": "4.11.2"
   },
   "devDependencies": {
@@ -40,7 +41,8 @@
     "jscoverage": "0.6.0",
     "mocha": "2.4.5",
     "mocha-lcov-reporter": "1.2.0",
-    "mongo-portable": "^1.1.2"
+    "mongo-portable": "1.1.2",
+    "rimraf": "2.5.2"
   },
   "scripts": {
     "test": "grunt run_test",
@@ -50,11 +52,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eastolfi/MongoPortable.git"
+    "url": "git+https://github.com/EastolfiWebDev/FileSystemStore.git"
   },
-  "homepage": "https://github.com/eastolfi/MongoPortable#readme",
+  "homepage": "https://github.com/EastolfiWebDev/FileSystemStore#readme",
   "bugs": {
-    "url": "https://github.com/eastolfi/MongoPortable/issues"
+    "url": "https://github.com/EastolfiWebDev/FileSystemStore/issues"
   },
   "license": "MIT"
 }
