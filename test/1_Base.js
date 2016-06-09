@@ -60,6 +60,10 @@ var checkFile = function(fileName, exist, empty) {
 var db = null;
 var store = null;
 describe("FileSystemStore", function() {
+    after(function() {
+        clearDataDir();
+    });
+    
     describe("#Constructor", function() {
         before(function() {
             clearDataDir();

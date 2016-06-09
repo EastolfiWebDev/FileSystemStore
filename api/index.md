@@ -1,7 +1,7 @@
 # FileSystemStore
 File System Store for persistence with [MongoPortable][Repo-MongoPortable], a portable MongoDB-like module.
 
-It handles the collections and documents in memory, and allow the use of stores for persistence.
+Persists the collection and documents received by the [MongoPortable][Repo-MongoPortable] module.
 
 # Installation
 ```shell

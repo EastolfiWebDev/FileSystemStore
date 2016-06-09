@@ -10,7 +10,7 @@ File System Store for persistence with [MongoPortable][Repo-MongoPortable], a po
 [![Downloads][downloads-image]][npm-url]
 [![Documentation Status][docs-image]][docs-url]
 
-It handles the collections and documents in memory, and allow the use of stores for persistence.
+Persists the collection and documents received by the [MongoPortable][Repo-MongoPortable] module.
 
 # Installation
 ```shell
