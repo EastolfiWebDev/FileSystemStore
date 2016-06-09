@@ -1,5 +1,5 @@
 # FileSystemStore
-File System Store for [MongoPortable][Repo-MongoPortable], a portable MongoDB module.
+File System Store for persistence with [MongoPortable][Repo-MongoPortable], a portable MongoDB-like module.
 
 [![Package Version][npm-image]][npm-url]
 [![NodeJS Version][node-image]][node-url]
@@ -31,7 +31,7 @@ var db = new MongoPortable("TEST");
 
 // Tells MongoPortable to use this store to persist the data
 db.addStore(new FileSystemStore({
-    // The path were the database will be stored
+    // The path where the database will be stored
     ddbb_path: "MY_PHISICAL_DDBB_PATH",
     // Whether the persistance will be asynchronous or not
     sync: true
