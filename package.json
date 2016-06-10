@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "file-system": "2.2.1",
+    "jsw-logger": "^1.0.1",
     "lodash": "4.11.2"
   },
   "devDependencies": {

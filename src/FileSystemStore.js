@@ -8,8 +8,11 @@
  * @license MIT Licensed
  */
  
-var fs = require("file-system"),
-    _ = require("lodash");
+var _ = require("lodash"),
+    fs = require("file-system"),
+    Logger = require("jsw-logger");
+    
+var logger = null;
 
 var _defOptions = {
     ddbb_path: 'db',
@@ -30,7 +33,7 @@ const _existsFile = function(filename) {
             exists = stats.isFile();
         }
     } catch (error) {
-        console.log('ook');
+        logger.debug(`File ${filename} doesn't exist`);
     } finally {
         return exists;
     }
@@ -45,12 +48,12 @@ const _persist = function(collectionPath, collection) {
     if (this.options.sync === true) {
         _writeFile(collectionPath, docs);
 
-        console.info('Document persisted in the file system');
+        logger.info('Document persisted in the file system');
     } else {
         fs.writeFile(collectionPath, (docs, err) => {
             if (err) throw err;
             
-            console.info('Document persisted in the file system');
+            logger.info('Document persisted in the file system');
         });
     }
 };
@@ -62,7 +65,7 @@ const _readFile = function(path, callback = null) {
             
             callback(data);
             
-            console.info('Collection readed from the file system');
+            logger.info('Collection readed from the file system');
         });
     } else {
         return fs.readFileSync(path);
@@ -97,10 +100,16 @@ const _writeFile = function(path, content = '') {
  * @param {Boolean} [options.collection_extension="json"] - The extension of the collection files. (Currently only "json" is supported)
  */
 class FileSysStore {
-    constructor(options) {
+    constructor(options = {}) {
         this.options = _.assign(_defOptions, options);
         
-        console.info(`Database will be in ${this.options.ddbb_path}`);
+        if (options.log) {
+            logger = Logger.getInstance(options.log);
+        } else {
+            logger = Logger.instance;
+        }
+        
+        logger.info(`Database will be in ${this.options.ddbb_path}`);
         
         // Create the DDBB path
         _createDirectory.call(this);
@@ -144,7 +153,7 @@ class FileSysStore {
      * @param {Object} args.collection - Information about the collection created
      */
      createCollection(args) {
-         console.log('#createCollection');
+         logger.log('#createCollection');
          
          var coll_path = this.getCollectionPath(args.collection.fullName.split('.')[0], args.collection.name);
          
@@ -170,15 +179,14 @@ class FileSysStore {
      * @param {Object} args.doc - Information about the document inserted
      */
     insert (args) {
-        console.log('#insert');
+        logger.log('#insert');
             
         _persist.call(this, this.getCollectionPath(args.collection.fullName.split('.')[0], args.collection.name), args.collection);
     }
     
     // TODO
     save (args) {
-        console.log('#save');
-        // console.log(args);
+        logger.log('#save');
     }
     
     /**********
@@ -187,9 +195,7 @@ class FileSysStore {
     
     // TODO
     all(args) {
-        console.log('#all');
-        
-        // console.log(args);
+        logger.log('#all');
     }
     
     /**
@@ -206,7 +212,7 @@ class FileSysStore {
      * @property {Object} args.fields - The fields showed in the query
      */
     find (args) {
-        console.log('#find');
+        logger.log('#find');
         
         var callback = null;
         
@@ -279,8 +285,7 @@ class FileSysStore {
      * @property {Object} args.fields - The fields showed in the query
      */
     findOne (args) {
-        console.log('#findOne');
-        // console.log(args);
+        logger.log('#findOne');
         
         // FIXME When we can do a line-per-line file search, change this
         this.find(args);
@@ -304,8 +309,7 @@ class FileSysStore {
      * @property {Object} args.docs - The updated/inserted documents information
      */
     update (args){
-        console.log('#update');
-        // console.log(args);
+        logger.log('#update');
         
         _persist.call(this, this.getCollectionPath(args.collection.fullName.split('.')[0], args.collection.name), args.collection);
     }
@@ -328,7 +332,7 @@ class FileSysStore {
      * @property {Object} args.docs - The deleted documents information
      */
     remove(args) {
-        console.log('#remove');
+        logger.log('#remove');
         
         _persist.call(this, this.getCollectionPath(args.collection.fullName.split('.')[0], args.collection.name), args.collection);
     }
@@ -338,32 +342,27 @@ class FileSysStore {
      **********/
     // TODO
     ensureIndex (args){
-        console.log('#ensureIndex');
-        // console.log(args);
+        logger.log('#ensureIndex');
     }
     
     // TODO
     backup (args){
-        console.log('#backup');
-        // console.log(args);
+        logger.log('#backup');
     }
     
     // TODO
     backups (args){
-        console.log('#backups');
-        // console.log(args);
+        logger.log('#backups');
     }
     
     // TODO
     removeBackup (args){
-        console.log('#removeBackup');
-        // console.log(args);
+        logger.log('#removeBackup');
     }
     
     // TODO
     restore (args){
-        console.log('#restore');
-        // console.log(args);
+        logger.log('#restore');
     }
 }
 
