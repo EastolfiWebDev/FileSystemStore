@@ -11,12 +11,12 @@ Store for MongoPortable ([https://github.com/EastolfiWebDev/MongoPortable](https
     * _instance_
         * [.getCollectionPath(ddbb_name, coll_name)](#FileSystemStore+getCollectionPath) ⇒ <code>String</code>
     * _inner_
-        * [~createCollection(args)](#FileSystemStore..createCollection)
-        * [~insert(args)](#FileSystemStore..insert)
-        * [~find(args)](#FileSystemStore..find)
-        * [~findOne(args)](#FileSystemStore..findOne)
-        * [~update(args)](#FileSystemStore..update)
-        * [~remove(args)](#FileSystemStore..remove)
+        * [~createCollection(event)](#FileSystemStore..createCollection) ⇒ <code>boolean</code> &#124; <code>Promise.&lt;boolean&gt;</code>
+        * [~insert(event)](#FileSystemStore..insert) ⇒ <code>boolean</code> &#124; <code>Promise.&lt;boolean&gt;</code>
+        * [~find(event)](#FileSystemStore..find) ⇒ <code>Object</code> &#124; <code>Promise.&lt;Object&gt;</code>
+        * [~findOne(event)](#FileSystemStore..findOne) ⇒ <code>Object</code> &#124; <code>Promise.&lt;Object&gt;</code>
+        * [~update(event)](#FileSystemStore..update) ⇒ <code>boolean</code> &#124; <code>Promise.&lt;boolean&gt;</code>
+        * [~remove(event)](#FileSystemStore..remove) ⇒ <code>boolean</code> &#124; <code>Promise.&lt;boolean&gt;</code>
 
 <a name="new_FileSystemStore_new"></a>
 
@@ -46,104 +46,110 @@ Get the path of the collection file
 
 <a name="FileSystemStore..createCollection"></a>
 
-### FileSystemStore~createCollection(args)
+### FileSystemStore~createCollection(event) ⇒ <code>boolean</code> &#124; <code>Promise.&lt;boolean&gt;</code>
 Receives a "createCollection" event from MongoPortable, syncronizing the collection file with the new info
 
 **Kind**: inner method of <code>[FileSystemStore](#FileSystemStore)</code>  
+**Returns**: <code>boolean</code> &#124; <code>Promise.&lt;boolean&gt;</code> - - True if the collection was created  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| args | <code>Object</code> | Arguments from the event |
-| args.connection | <code>Object</code> | Information about the current database connection |
-| args.collection | <code>Object</code> | Information about the collection created |
+| event | <code>Object</code> | Information of the event |
+| event.connection | <code>Object</code> | Information about the current database connection |
+| event.collection | <code>Object</code> | Information about the collection created |
 
 <a name="FileSystemStore..insert"></a>
 
-### FileSystemStore~insert(args)
+### FileSystemStore~insert(event) ⇒ <code>boolean</code> &#124; <code>Promise.&lt;boolean&gt;</code>
 Receives a "insert" event from MongoPortable, syncronizing the collection file with the new info
 
 **Kind**: inner method of <code>[FileSystemStore](#FileSystemStore)</code>  
+**Returns**: <code>boolean</code> &#124; <code>Promise.&lt;boolean&gt;</code> - - True if the collection was inserted  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| args | <code>Object</code> | Arguments from the event |
-| args.collection | <code>Object</code> | Information about the collection |
-| args.doc | <code>Object</code> | Information about the document inserted |
+| event | <code>Object</code> | Arguments from the event |
+| event.collection | <code>Object</code> | Information about the collection |
+| event.doc | <code>Object</code> | Information about the document inserted |
 
 <a name="FileSystemStore..find"></a>
 
-### FileSystemStore~find(args)
+### FileSystemStore~find(event) ⇒ <code>Object</code> &#124; <code>Promise.&lt;Object&gt;</code>
 Receives a "find" event from MongoPortable, fetching the info of the collection file
 
 **Kind**: inner method of <code>[FileSystemStore](#FileSystemStore)</code>  
+**Returns**: <code>Object</code> &#124; <code>Promise.&lt;Object&gt;</code> - - An object with the document and indexes  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| args | <code>Object</code> | Arguments from the event |
+| event | <code>Object</code> | Arguments from the event |
 
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| args.collection | <code>Object</code> | Information about the collection |
-| args.selector | <code>Object</code> | The selection of the query |
-| args.fields | <code>Object</code> | The fields showed in the query |
+| event.collection | <code>Object</code> | Information about the collection |
+| event.selector | <code>Object</code> | The selection of the query |
+| event.fields | <code>Object</code> | The fields showed in the query |
 
 <a name="FileSystemStore..findOne"></a>
 
-### FileSystemStore~findOne(args)
+### FileSystemStore~findOne(event) ⇒ <code>Object</code> &#124; <code>Promise.&lt;Object&gt;</code>
 Receives a "findOne" event from MongoPortable, fetching the info of the collection file
 
 **Kind**: inner method of <code>[FileSystemStore](#FileSystemStore)</code>  
+**Returns**: <code>Object</code> &#124; <code>Promise.&lt;Object&gt;</code> - - An object with the document and indexes  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| args | <code>Object</code> | Arguments from the event |
+| event | <code>Object</code> | Arguments from the event |
 
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| args.collection | <code>Object</code> | Information about the collection |
-| args.selector | <code>Object</code> | The selection of the query |
-| args.fields | <code>Object</code> | The fields showed in the query |
+| event.collection | <code>Object</code> | Information about the collection |
+| event.selector | <code>Object</code> | The selection of the query |
+| event.fields | <code>Object</code> | The fields showed in the query |
 
 <a name="FileSystemStore..update"></a>
 
-### FileSystemStore~update(args)
+### FileSystemStore~update(event) ⇒ <code>boolean</code> &#124; <code>Promise.&lt;boolean&gt;</code>
 Receives an "update" event from MongoPortable, syncronizing the collection file with the new info
 
 **Kind**: inner method of <code>[FileSystemStore](#FileSystemStore)</code>  
+**Returns**: <code>boolean</code> &#124; <code>Promise.&lt;boolean&gt;</code> - - True if the documents were updated  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| args | <code>Object</code> | Arguments from the event |
+| event | <code>Object</code> | Arguments from the event |
 
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| args.collection | <code>Object</code> | Information about the collection |
-| args.selector | <code>Object</code> | The selection of the query |
-| args.modifier | <code>Object</code> | The modifier used in the query |
-| args.docs | <code>Object</code> | The updated/inserted documents information |
+| event.collection | <code>Object</code> | Information about the collection |
+| event.selector | <code>Object</code> | The selection of the query |
+| event.modifier | <code>Object</code> | The modifier used in the query |
+| event.docs | <code>Object</code> | The updated/inserted documents information |
 
 <a name="FileSystemStore..remove"></a>
 
-### FileSystemStore~remove(args)
+### FileSystemStore~remove(event) ⇒ <code>boolean</code> &#124; <code>Promise.&lt;boolean&gt;</code>
 Receives an "remove" event from MongoPortable, syncronizing the collection file with the new info
 
 **Kind**: inner method of <code>[FileSystemStore](#FileSystemStore)</code>  
+**Returns**: <code>boolean</code> &#124; <code>Promise.&lt;boolean&gt;</code> - - True if the documents were removed  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| args | <code>Object</code> | Arguments from the event |
+| event | <code>Object</code> | Arguments from the event |
 
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| args.collection | <code>Object</code> | Information about the collection |
-| args.selector | <code>Object</code> | The selection of the query |
-| args.docs | <code>Object</code> | The deleted documents information |
+| event.collection | <code>Object</code> | Information about the collection |
+| event.selector | <code>Object</code> | The selection of the query |
+| event.docs | <code>Object</code> | The deleted documents information |
 

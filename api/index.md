@@ -1,98 +1,155 @@
-# FileSystemStore
-File System Store for persistence with [MongoPortable][Repo-MongoPortable], a portable MongoDB-like module.
+<a name="FileSystemStore"></a>
 
-Persists the collection and documents received by the [MongoPortable][Repo-MongoPortable] module.
+## FileSystemStore
+Store for MongoPortable ([https://github.com/EastolfiWebDev/MongoPortable](https://github.com/EastolfiWebDev/MongoPortable))
 
-# Installation
-```shell
-npm install --save file-system-store
-```
+**Kind**: global class  
+**Since**: 0.0.1  
 
->**NOTE**: This module complements MongoPortable, a MongoDB-like portable database.
-If you don't have it installed, please read the [documentation][Repo-MongoPortable].
+* [FileSystemStore](#FileSystemStore)
+    * [new FileSystemStore([options])](#new_FileSystemStore_new)
+    * _instance_
+        * [.getCollectionPath(ddbb_name, coll_name)](#FileSystemStore+getCollectionPath) ⇒ <code>String</code>
+    * _inner_
+        * [~createCollection(event)](#FileSystemStore..createCollection) ⇒ <code>boolean</code> &#124; <code>Promise.&lt;boolean&gt;</code>
+        * [~insert(event)](#FileSystemStore..insert) ⇒ <code>boolean</code> &#124; <code>Promise.&lt;boolean&gt;</code>
+        * [~find(event)](#FileSystemStore..find) ⇒ <code>Object</code> &#124; <code>Promise.&lt;Object&gt;</code>
+        * [~findOne(event)](#FileSystemStore..findOne) ⇒ <code>Object</code> &#124; <code>Promise.&lt;Object&gt;</code>
+        * [~update(event)](#FileSystemStore..update) ⇒ <code>boolean</code> &#124; <code>Promise.&lt;boolean&gt;</code>
+        * [~remove(event)](#FileSystemStore..remove) ⇒ <code>boolean</code> &#124; <code>Promise.&lt;boolean&gt;</code>
 
-# Usage
-```javascript
-// Declaring the modules dependencies
-var MongoPortable = require("mongo-portable"),
-    FileSystemStore = require("file-system-store");
+<a name="new_FileSystemStore_new"></a>
 
-// Instantiates a new ddbb object by passing a ddbb name
-var db = new MongoPortable("TEST");
+### new FileSystemStore([options])
+FileSystemStore
 
-// Tells MongoPortable to use this store to persist the data
-db.addStore(new FileSystemStore({
-    // The path where the database will be stored
-    ddbb_path: "MY_PHISICAL_DDBB_PATH",
-    // Whether the persistance will be asynchronous or not
-    sync: true
-}));
 
-// Creates a new collection named "users" 
-//      (if it's already created, it will just return it instead)
-var users = db.collection("users");
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [options] | <code>Object</code> |  | Additional options |
+| [options.ddbb_path] | <code>Boolean</code> | <code>&quot;db&quot;</code> | The name of the directory where the database will be located |
+| [options.sync] | <code>Boolean</code> | <code>true</code> | Set it false to make all the file access asynchronous. (Currently only sync=true is supported) |
+| [options.collection_extension] | <code>Boolean</code> | <code>&quot;json&quot;</code> | The extension of the collection files. (Currently only "json" is supported) |
 
-// Inserts a new document into the collection
-var document = users.insert({ name: "John", lastName: "Abruzzi" });
-console.log(document);  // -> { name: "John", lastName: "Abruzzi" }
+<a name="FileSystemStore+getCollectionPath"></a>
 
-// Creates a cursor with the query information, ready to be fetched
-var cursor = users.find({ name: "John" });
+### fileSystemStore.getCollectionPath(ddbb_name, coll_name) ⇒ <code>String</code>
+Get the path of the collection file
 
-// Iterates over the cursor, obtaining each document that matchs the query
-cursor.forEach(function(doc) {
-    console.log(doc);  // -> { name: "John", lastName: "Abruzzi" }
-});
-```
+**Kind**: instance method of <code>[FileSystemStore](#FileSystemStore)</code>  
+**Returns**: <code>String</code> - - The path of the file  
 
-----------
+| Param | Type | Description |
+| --- | --- | --- |
+| ddbb_name | <code>String</code> | Name of the database |
+| coll_name | <code>String</code> | Name of the collection |
 
-Currently, we are supporting simple CRUD operations.
+<a name="FileSystemStore..createCollection"></a>
 
-## TO-DO List
-### Collection Operations
-- [X] Create
-- [ ] Drop
+### FileSystemStore~createCollection(event) ⇒ <code>boolean</code> &#124; <code>Promise.&lt;boolean&gt;</code>
+Receives a "createCollection" event from MongoPortable, syncronizing the collection file with the new info
 
-### Documents Operations
-- [X] Creating
-    * [X] .insert()
-    * [X] .save()
-- [X] Reading
-    * [X] .find()
-    * [X] .findOne()
-- [X] Updating
-    * [X] .update()
-- [X] Deleting
-    * [X] .remove()
+**Kind**: inner method of <code>[FileSystemStore](#FileSystemStore)</code>  
+**Returns**: <code>boolean</code> &#124; <code>Promise.&lt;boolean&gt;</code> - - True if the collection was created  
 
-----------
+| Param | Type | Description |
+| --- | --- | --- |
+| event | <code>Object</code> | Information of the event |
+| event.connection | <code>Object</code> | Information about the current database connection |
+| event.collection | <code>Object</code> | Information about the collection created |
 
-### Indexes Operations
-- [ ] createIndex
-- [ ] ensureIndex
-- [ ] dropIndex
-- [ ] reIndex
+<a name="FileSystemStore..insert"></a>
 
-### Backups Operations
-- [ ] backup
-- [ ] backups
-- [ ] removeDackup
-- [ ] restore
+### FileSystemStore~insert(event) ⇒ <code>boolean</code> &#124; <code>Promise.&lt;boolean&gt;</code>
+Receives a "insert" event from MongoPortable, syncronizing the collection file with the new info
 
-----------
+**Kind**: inner method of <code>[FileSystemStore](#FileSystemStore)</code>  
+**Returns**: <code>boolean</code> &#124; <code>Promise.&lt;boolean&gt;</code> - - True if the collection was inserted  
 
-# License
+| Param | Type | Description |
+| --- | --- | --- |
+| event | <code>Object</code> | Arguments from the event |
+| event.collection | <code>Object</code> | Information about the collection |
+| event.doc | <code>Object</code> | Information about the document inserted |
 
-MIT
+<a name="FileSystemStore..find"></a>
 
-[Repo-MongoPortable]: https://github.com/EastolfiWebDev/MongoPortable
+### FileSystemStore~find(event) ⇒ <code>Object</code> &#124; <code>Promise.&lt;Object&gt;</code>
+Receives a "find" event from MongoPortable, fetching the info of the collection file
 
-[mongo-db-command]: https://docs.mongodb.com/manual/reference/command/
+**Kind**: inner method of <code>[FileSystemStore](#FileSystemStore)</code>  
+**Returns**: <code>Object</code> &#124; <code>Promise.&lt;Object&gt;</code> - - An object with the document and indexes  
 
-[API-MongoPortable]: https://github.com/EastolfiWebDev/MongoPortable/blob/master/api/MongoPortable.md
-[API-Collection]: https://github.com/EastolfiWebDev/MongoPortable/blob/master/api/Collection.md
-[API-Cursor]: https://github.com/EastolfiWebDev/MongoPortable/blob/master/api/Cursor.md
+| Param | Type | Description |
+| --- | --- | --- |
+| event | <code>Object</code> | Arguments from the event |
 
-[Module-FileSystemStore]: https://github.com/EastolfiWebDev/FileSystemStore
-[API-FileSystemStore]: https://github.com/EastolfiWebDev/FileSystemStore/blob/master/api/FileSystemStore.md
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| event.collection | <code>Object</code> | Information about the collection |
+| event.selector | <code>Object</code> | The selection of the query |
+| event.fields | <code>Object</code> | The fields showed in the query |
+
+<a name="FileSystemStore..findOne"></a>
+
+### FileSystemStore~findOne(event) ⇒ <code>Object</code> &#124; <code>Promise.&lt;Object&gt;</code>
+Receives a "findOne" event from MongoPortable, fetching the info of the collection file
+
+**Kind**: inner method of <code>[FileSystemStore](#FileSystemStore)</code>  
+**Returns**: <code>Object</code> &#124; <code>Promise.&lt;Object&gt;</code> - - An object with the document and indexes  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| event | <code>Object</code> | Arguments from the event |
+
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| event.collection | <code>Object</code> | Information about the collection |
+| event.selector | <code>Object</code> | The selection of the query |
+| event.fields | <code>Object</code> | The fields showed in the query |
+
+<a name="FileSystemStore..update"></a>
+
+### FileSystemStore~update(event) ⇒ <code>boolean</code> &#124; <code>Promise.&lt;boolean&gt;</code>
+Receives an "update" event from MongoPortable, syncronizing the collection file with the new info
+
+**Kind**: inner method of <code>[FileSystemStore](#FileSystemStore)</code>  
+**Returns**: <code>boolean</code> &#124; <code>Promise.&lt;boolean&gt;</code> - - True if the documents were updated  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| event | <code>Object</code> | Arguments from the event |
+
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| event.collection | <code>Object</code> | Information about the collection |
+| event.selector | <code>Object</code> | The selection of the query |
+| event.modifier | <code>Object</code> | The modifier used in the query |
+| event.docs | <code>Object</code> | The updated/inserted documents information |
+
+<a name="FileSystemStore..remove"></a>
+
+### FileSystemStore~remove(event) ⇒ <code>boolean</code> &#124; <code>Promise.&lt;boolean&gt;</code>
+Receives an "remove" event from MongoPortable, syncronizing the collection file with the new info
+
+**Kind**: inner method of <code>[FileSystemStore](#FileSystemStore)</code>  
+**Returns**: <code>boolean</code> &#124; <code>Promise.&lt;boolean&gt;</code> - - True if the documents were removed  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| event | <code>Object</code> | Arguments from the event |
+
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| event.collection | <code>Object</code> | Information about the collection |
+| event.selector | <code>Object</code> | The selection of the query |
+| event.docs | <code>Object</code> | The deleted documents information |
+

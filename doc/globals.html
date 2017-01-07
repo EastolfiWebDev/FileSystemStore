@@ -63,109 +63,24 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<h1 id="filesystemstore">FileSystemStore</h1>
-				<p>File System Store for persistence with <a href="https://github.com/EastolfiWebDev/MongoPortable">MongoPortable</a>, a portable MongoDB-like module.</p>
-				<p><a href="https://www.npmjs.com/package/file-system-store"><img src="https://img.shields.io/npm/v/file-system-store.svg?label=Package%20Version" alt="Package Version"></a>
-				<a href="https://nodejs.org/en/"><img src="https://img.shields.io/badge/node-v4.4.0-blue.svg?label=Node%20Version" alt="NodeJS Version"></a></p>
-				<p><a href="https://travis-ci.org/EastolfiWebDev/FileSystemStore"><img src="https://img.shields.io/travis/EastolfiWebDev/FileSystemStore.svg?label=linux" alt="Linux Build"></a>
-					<a href="https://ci.appveyor.com/project/eastolfi/filesystemstore"><img src="https://img.shields.io/appveyor/ci/eastolfi/filesystemstore/master.svg?label=windows" alt="Windows Build"></a>
-					<a href="https://coveralls.io/github/EastolfiWebDev/FileSystemStore?branch=master"><img src="https://coveralls.io/repos/github/EastolfiWebDev/FileSystemStore/badge.svg?branch=master" alt="Test Coverage"></a>
-					<a href="https://www.npmjs.com/package/file-system-store"><img src="https://img.shields.io/npm/dt/file-system-store.svg" alt="Downloads"></a>
-				<a href="http://filesystemstore.readthedocs.io/en/latest/?badge=latest"><img src="https://readthedocs.org/projects/filesystemstore/badge/?version=latest" alt="Documentation Status"></a></p>
-				<p>Persists the collection and documents received by the <a href="https://github.com/EastolfiWebDev/MongoPortable">MongoPortable</a> module.</p>
-				<h1 id="installation">Installation</h1>
-				<pre><code class="lang-shell">npm install --save file-system-store
-</code></pre>
-				<blockquote>
-					<p><strong>NOTE</strong>: This module complements MongoPortable, a MongoDB-like portable database.
-					If you don&#39;t have it installed, please read the <a href="https://github.com/EastolfiWebDev/MongoPortable">documentation</a>.</p>
-				</blockquote>
-				<h1 id="usage">Usage</h1>
-				<pre><code class="lang-javascript"><span class="hljs-comment">// Declaring the modules dependencies</span>
-<span class="hljs-keyword">var</span> MongoPortable = <span class="hljs-built_in">require</span>(<span class="hljs-string">"mongo-portable"</span>),
-    FileSystemStore = <span class="hljs-built_in">require</span>(<span class="hljs-string">"file-system-store"</span>);
-
-<span class="hljs-comment">// Instantiates a new ddbb object by passing a ddbb name</span>
-<span class="hljs-keyword">var</span> db = <span class="hljs-keyword">new</span> MongoPortable(<span class="hljs-string">"TEST"</span>);
-
-<span class="hljs-comment">// Tells MongoPortable to use this store to persist the data</span>
-db.addStore(<span class="hljs-keyword">new</span> FileSystemStore({
-    <span class="hljs-comment">// The path where the database will be stored</span>
-    ddbb_path: <span class="hljs-string">"MY_PHISICAL_DDBB_PATH"</span>,
-    <span class="hljs-comment">// Whether the persistance will be asynchronous or not</span>
-    sync: <span class="hljs-literal">true</span>
-}));
-
-<span class="hljs-comment">// Creates a new collection named "users" </span>
-<span class="hljs-comment">//      (if it's already created, it will just return it instead)</span>
-<span class="hljs-keyword">var</span> users = db.collection(<span class="hljs-string">"users"</span>);
-
-<span class="hljs-comment">// Inserts a new document into the collection</span>
-<span class="hljs-keyword">var</span> <span class="hljs-built_in">document</span> = users.insert({ <span class="hljs-attr">name</span>: <span class="hljs-string">"John"</span>, <span class="hljs-attr">lastName</span>: <span class="hljs-string">"Abruzzi"</span> });
-<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">document</span>);  <span class="hljs-comment">// -&gt; { name: "John", lastName: "Abruzzi" }</span>
-
-<span class="hljs-comment">// Creates a cursor with the query information, ready to be fetched</span>
-<span class="hljs-keyword">var</span> cursor = users.find({ <span class="hljs-attr">name</span>: <span class="hljs-string">"John"</span> });
-
-<span class="hljs-comment">// Iterates over the cursor, obtaining each document that matchs the query</span>
-cursor.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">doc</span>) </span>{
-    <span class="hljs-built_in">console</span>.log(doc);  <span class="hljs-comment">// -&gt; { name: "John", lastName: "Abruzzi" }</span>
-});
-</code></pre>
-				<hr>
-				<p>Currently, we are supporting simple CRUD operations.</p>
-				<h2 id="to-do-list">TO-DO List</h2>
-				<h3 id="collection-operations">Collection Operations</h3>
-				<ul>
-					<li>[X] Create</li>
-					<li>[ ] Drop</li>
-				</ul>
-				<h3 id="documents-operations">Documents Operations</h3>
-				<ul>
-					<li>[X] Creating<ul>
-							<li>[X] .insert()</li>
-							<li>[X] .save()</li>
-						</ul>
-					</li>
-					<li>[X] Reading<ul>
-							<li>[X] .find()</li>
-							<li>[X] .findOne()</li>
-						</ul>
-					</li>
-					<li>[X] Updating<ul>
-							<li>[X] .update()</li>
-						</ul>
-					</li>
-					<li>[X] Deleting<ul>
-							<li>[X] .remove()</li>
-						</ul>
-					</li>
-				</ul>
-				<hr>
-				<h3 id="indexes-operations">Indexes Operations</h3>
-				<ul>
-					<li>[ ] createIndex</li>
-					<li>[ ] ensureIndex</li>
-					<li>[ ] dropIndex</li>
-					<li>[ ] reIndex</li>
-				</ul>
-				<h3 id="backups-operations">Backups Operations</h3>
-				<ul>
-					<li>[ ] backup</li>
-					<li>[ ] backups</li>
-					<li>[ ] removeDackup</li>
-					<li>[ ] restore</li>
-				</ul>
-				<hr>
-				<h1 id="license">License</h1>
-				<p>MIT</p>
-			</div>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>External modules</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-external-module"><a href="modules/_filesystemstore_.html" class="tsd-kind-icon">"<wbr>File<wbr>System<wbr>Store"</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
-					<li class="globals  ">
+					<li class="globals current ">
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
