@@ -1,6 +1,6 @@
 {
   "name": "file-system-store",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "File System Store for MongoPortable, a portable MongoDB module (https://github.com/eastolfi/MongoPortable)",
   "author": "Eduardo Astolfi <eastolfi91@gmail.com>",
   "keywords": [

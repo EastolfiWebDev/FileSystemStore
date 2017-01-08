@@ -1,5 +1,10 @@
-<a name="1.1.0"></a>
-# [1.1.0](https://github.com/eastolfi/https://github.com/eastolfi/compare/v1.0.1...v1.1.0) (2017-01-07)
+<a name="Unreleased"></a>
+# Unreleased (2017-01-08)
+
+
+
+<a name="1.0.2"></a>
+## [1.0.2](https://github.com/eastolfi/https://github.com/eastolfi/compare/v1.0.1...v1.0.2) (2016-06-10)
 
 
 
