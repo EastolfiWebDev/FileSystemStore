@@ -4,7 +4,7 @@ var gutil = require('gulp-util');
 var bump = require('gulp-bump');
 var git = require('gulp-git');
 var minimist = require('minimist');
-// var conventionalGithubReleaser = require('conventional-github-releaser');
+var conventionalGithubReleaser = require('conventional-github-releaser');
 
 var knownOptions = {
     boolean: ['major', 'minor', 'patch'],
@@ -69,11 +69,11 @@ gulp.task('create-new-tag', function (cb) {
     }
 });
 
-// gulp.task('release:github', function (done) {
-//     conventionalGithubReleaser({
-//         type: "oauth",
-//         token: 'TOKEN' // change this to your own GitHub token or use an environment variable
-//     }, {
-//         preset: 'angular' // Or to any other commit message convention you use.
-//     }, done);
-// });
+gulp.task('release:github', function (done) {
+    conventionalGithubReleaser({
+        type: "oauth",
+        token: '29410a3a2ed1b2ca916a8823f3f3e6da4a236ba0' // change this to your own GitHub token or use an environment variable
+    }, {
+        preset: 'angular' // Or to any other commit message convention you use.
+    }, done);
+});
