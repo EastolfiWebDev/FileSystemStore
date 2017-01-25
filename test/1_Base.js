@@ -4,9 +4,9 @@ var expect = require("chai").expect,
     MongoPortable = require("mongo-portable"),
     FileSystemStore = require("../lib/FileSystemStore.js");
 
-const DDBB_NAME = 'test_ddbb';
-const COLL_NAME = 'test_collection';
-const DDBB_PATH = 'data';
+const DDBB_NAME = "test_ddbb";
+const COLL_NAME = "test_collection";
+const DDBB_PATH = "data";
 
 const DOC = {
     _id: "1111",
@@ -172,24 +172,24 @@ describe("FileSystemStore", function() {
         
         describe("#Read", function() {
             before(function() {
-                fs.appendFileSync(`${DDBB_PATH}/${DDBB_NAME}/${COLL_NAME}.json`, '{"_id":"0000","name":"John", "lastname": "Wayne"}');
+                fs.appendFileSync(`${DDBB_PATH}/${DDBB_NAME}/${COLL_NAME}.json`, "{\"_id\":\"0000\",\"name\":\"John\", \"lastname\": \"Wayne\"}");
             });
             
             it("should be able to read a document", function() {
                 var coll = db.collection(COLL_NAME);
                 
-                var docs = coll.find({ name: 'John' }).fetch();
+                var docs = coll.find({ name: "John" }).fetch();
                 
                 expect(docs).to.exist;
                 
                 expect(docs).to.be.instanceof(Array);
                 expect(docs).to.have.length(2);
                 
-                var doc = coll.findOne({ lastname: 'Wayne' });
+                var doc = coll.findOne({ lastname: "Wayne" });
                 
                 expect(doc).to.exist;
                 
-                expect(doc.name).to.be.equal('John');
+                expect(doc.name).to.be.equal("John");
             });
         });
         
@@ -198,9 +198,9 @@ describe("FileSystemStore", function() {
                 var coll = db.collection(COLL_NAME);
                 
                 coll.update({
-                    lastname: 'Wayne'
+                    lastname: "Wayne"
                 }, {
-                    name: 'Bruce'
+                    name: "Bruce"
                 });
                 
                 // Disconnecting the DDBB to check persistance
@@ -211,13 +211,13 @@ describe("FileSystemStore", function() {
                 
                 coll = db.collection(COLL_NAME);
                 
-                var docs = coll.find({ name: 'John' }).fetch();
+                var docs = coll.find({ name: "John" }).fetch();
                 
                 expect(docs).to.exist;
                 
                 expect(docs).to.be.instanceof(Array);
                 expect(docs).to.have.length(1);
-                expect(docs[0].lastname).to.be.equal('Abruzzi');
+                expect(docs[0].lastname).to.be.equal("Abruzzi");
             });
         });
         
@@ -226,7 +226,7 @@ describe("FileSystemStore", function() {
                 var coll = db.collection(COLL_NAME);
                 
                 coll.delete({
-                    lastname: 'Wayne'
+                    lastname: "Wayne"
                 });
                 
                 // Disconnecting the DDBB to check persistance
@@ -243,8 +243,8 @@ describe("FileSystemStore", function() {
                 
                 expect(docs).to.be.instanceof(Array);
                 expect(docs).to.have.length(1);
-                expect(docs[0].name).to.be.equal('John');
-                expect(docs[0].lastname).to.be.equal('Abruzzi');
+                expect(docs[0].name).to.be.equal("John");
+                expect(docs[0].lastname).to.be.equal("Abruzzi");
             });
         });
     });
