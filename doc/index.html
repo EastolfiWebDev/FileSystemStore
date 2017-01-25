@@ -64,99 +64,138 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 id="filesystemstore">FileSystemStore</h1>
-				<p>File System Store for persistence with <a href="https://github.com/EastolfiWebDev/MongoPortable">MongoPortable</a>, a portable MongoDB-like module.</p>
-				<p><a href="https://www.npmjs.com/package/file-system-store"><img src="https://img.shields.io/npm/v/file-system-store.svg?label=Package%20Version" alt="Package Version"></a>
+				<h1 id="jsw-logger">JSW-Logger</h1>
+				<p>Javascript logging module which writes in the console all warnings and erros</p>
+				<p><a href="https://www.npmjs.com/package/jsw-logger"><img src="https://img.shields.io/npm/v/jsw-logger.svg?label=Package%20Version" alt="Package Version"></a>
 				<a href="https://nodejs.org/en/"><img src="https://img.shields.io/badge/node-v4.4.0-blue.svg?label=Node%20Version" alt="NodeJS Version"></a></p>
-				<p><a href="https://travis-ci.org/EastolfiWebDev/FileSystemStore"><img src="https://img.shields.io/travis/EastolfiWebDev/FileSystemStore.svg?label=linux" alt="Linux Build"></a>
-					<a href="https://ci.appveyor.com/project/eastolfi/filesystemstore"><img src="https://img.shields.io/appveyor/ci/eastolfi/filesystemstore/master.svg?label=windows" alt="Windows Build"></a>
-					<a href="https://coveralls.io/github/EastolfiWebDev/FileSystemStore?branch=master"><img src="https://coveralls.io/repos/github/EastolfiWebDev/FileSystemStore/badge.svg?branch=master" alt="Test Coverage"></a>
-					<a href="https://www.npmjs.com/package/file-system-store"><img src="https://img.shields.io/npm/dt/file-system-store.svg" alt="Downloads"></a>
-				<a href="http://filesystemstore.readthedocs.io/en/latest/?badge=latest"><img src="https://readthedocs.org/projects/filesystemstore/badge/?version=latest" alt="Documentation Status"></a></p>
-				<p>Persists the collection and documents received by the <a href="https://github.com/EastolfiWebDev/MongoPortable">MongoPortable</a> module.</p>
+				<p><a href="https://travis-ci.org/EastolfiWebDev/JSW-Logger"><img src="https://img.shields.io/travis/EastolfiWebDev/JSW-Logger.svg?label=linux" alt="Linux Build"></a>
+					<a href="https://ci.appveyor.com/project/eastolfi/jsw-logger"><img src="https://img.shields.io/appveyor/ci/eastolfi/jsw-logger/master.svg?label=windows" alt="Windows Build"></a>
+					<a href="https://coveralls.io/github/EastolfiWebDev/JSW-Logger?branch=master"><img src="https://coveralls.io/repos/github/EastolfiWebDev/JSW-Logger/badge.svg?branch=master" alt="Test Coverage"></a>
+					<a href="https://www.npmjs.com/package/jsw-logger"><img src="https://img.shields.io/npm/dt/jsw-logger.svg" alt="Downloads"></a>
+				<a href="http://jsw-logger.readthedocs.io/en/latest/?badge=latest"><img src="https://readthedocs.org/projects/jsw-logger/badge/?version=latest" alt="Documentation Status"></a></p>
 				<h1 id="installation">Installation</h1>
-				<pre><code class="lang-shell">npm install --save file-system-store
+				<pre><code class="lang-shell">npm install --save jsw-logger
 </code></pre>
-				<blockquote>
-					<p><strong>NOTE</strong>: This module complements MongoPortable, a MongoDB-like portable database.
-					If you don&#39;t have it installed, please read the <a href="https://github.com/EastolfiWebDev/MongoPortable">documentation</a>.</p>
-				</blockquote>
+				<hr>
 				<h1 id="usage">Usage</h1>
-				<pre><code class="lang-javascript"><span class="hljs-comment">// Declaring the modules dependencies</span>
-<span class="hljs-keyword">var</span> MongoPortable = <span class="hljs-built_in">require</span>(<span class="hljs-string">"mongo-portable"</span>),
-    FileSystemStore = <span class="hljs-built_in">require</span>(<span class="hljs-string">"file-system-store"</span>);
-
-<span class="hljs-comment">// Instantiates a new ddbb object by passing a ddbb name</span>
-<span class="hljs-keyword">var</span> db = <span class="hljs-keyword">new</span> MongoPortable(<span class="hljs-string">"TEST"</span>);
-
-<span class="hljs-comment">// Tells MongoPortable to use this store to persist the data</span>
-db.addStore(<span class="hljs-keyword">new</span> FileSystemStore({
-    <span class="hljs-comment">// The path where the database will be stored</span>
-    ddbb_path: <span class="hljs-string">"MY_PHISICAL_DDBB_PATH"</span>,
-    <span class="hljs-comment">// Whether the persistance will be asynchronous or not</span>
-    sync: <span class="hljs-literal">true</span>
-}));
-
-<span class="hljs-comment">// Creates a new collection named "users" </span>
-<span class="hljs-comment">//      (if it's already created, it will just return it instead)</span>
-<span class="hljs-keyword">var</span> users = db.collection(<span class="hljs-string">"users"</span>);
-
-<span class="hljs-comment">// Inserts a new document into the collection</span>
-<span class="hljs-keyword">var</span> <span class="hljs-built_in">document</span> = users.insert({ <span class="hljs-attr">name</span>: <span class="hljs-string">"John"</span>, <span class="hljs-attr">lastName</span>: <span class="hljs-string">"Abruzzi"</span> });
-<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">document</span>);  <span class="hljs-comment">// -&gt; { name: "John", lastName: "Abruzzi" }</span>
-
-<span class="hljs-comment">// Creates a cursor with the query information, ready to be fetched</span>
-<span class="hljs-keyword">var</span> cursor = users.find({ <span class="hljs-attr">name</span>: <span class="hljs-string">"John"</span> });
-
-<span class="hljs-comment">// Iterates over the cursor, obtaining each document that matchs the query</span>
-cursor.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">doc</span>) </span>{
-    <span class="hljs-built_in">console</span>.log(doc);  <span class="hljs-comment">// -&gt; { name: "John", lastName: "Abruzzi" }</span>
+				<p>Currently, JSW-Logger can be used within a TypeScript based project, as a node dependency or directly in the browser.</p>
+				<h2 id="declaration-">Declaration:</h2>
+				<p>First we need to import the dependency:</p>
+				<h3 id="typescript">Typescript</h3>
+				<pre><code class="lang-ts"><span class="hljs-keyword">import</span> { JSWLogger } from <span class="hljs-string">"jsw-logger"</span>;
+</code></pre>
+				<h3 id="node-js">Node JS</h3>
+				<pre><code class="lang-js"><span class="hljs-keyword">var</span> JSWLogger = <span class="hljs-built_in">require</span>(<span class="hljs-string">"jsw-logger"</span>).JSWLogger;
+</code></pre>
+				<h3 id="browser">Browser</h3>
+				<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"path/to/deps/dist/jsw-logger.min.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- This exposes a global "JSWLogger" variable --&gt;</span>
+</code></pre>
+				<h2 id="instantiating">Instantiating</h2>
+				<p>We can instanciate the logger passing a bunch of options:</p>
+				<pre><code class="lang-js"><span class="hljs-keyword">var</span> Logger = JSWLogger.getInstance({
+    <span class="hljs-attr">level</span>: <span class="hljs-number">2</span>,   <span class="hljs-comment">// logs "info", "warn" and "error" by default</span>
+    hideAllLogs: <span class="hljs-literal">false</span>, <span class="hljs-comment">// hides messsages from being logged</span>
+    hideLevelLog: <span class="hljs-literal">false</span>,    <span class="hljs-comment">// hides the "LOG: " from the begining of the message</span>
+    throwError: <span class="hljs-literal">true</span>   <span class="hljs-comment">// throw an error when "Logger.throw"</span>
 });
 </code></pre>
-				<hr>
-				<p>Currently, we are supporting simple CRUD operations.</p>
-				<h2 id="to-do-list">TO-DO List</h2>
-				<h3 id="collection-operations">Collection Operations</h3>
-				<ul>
-					<li>[X] Create</li>
-					<li>[ ] Drop</li>
-				</ul>
-				<h3 id="documents-operations">Documents Operations</h3>
-				<ul>
-					<li>[X] Creating<ul>
-							<li>[X] .insert()</li>
-							<li>[X] .save()</li>
-						</ul>
-					</li>
-					<li>[X] Reading<ul>
-							<li>[X] .find()</li>
-							<li>[X] .findOne()</li>
-						</ul>
-					</li>
-					<li>[X] Updating<ul>
-							<li>[X] .update()</li>
-						</ul>
-					</li>
-					<li>[X] Deleting<ul>
-							<li>[X] .remove()</li>
-						</ul>
-					</li>
-				</ul>
-				<hr>
-				<h3 id="indexes-operations">Indexes Operations</h3>
-				<ul>
-					<li>[ ] createIndex</li>
-					<li>[ ] ensureIndex</li>
-					<li>[ ] dropIndex</li>
-					<li>[ ] reIndex</li>
-				</ul>
-				<h3 id="backups-operations">Backups Operations</h3>
-				<ul>
-					<li>[ ] backup</li>
-					<li>[ ] backups</li>
-					<li>[ ] removeDackup</li>
-					<li>[ ] restore</li>
-				</ul>
+				<p>Or we can retrieve the instance with the options by default:</p>
+				<pre><code class="lang-js"><span class="hljs-keyword">var</span> Logger = JSWLogger.instance;
+</code></pre>
+				<p>Also, the options can only by setted when instantiating with the first way.
+					To change them, we should access the options object: <code>Logger.options.throwError = false</code>
+				Or we can drop the instance so we can regenerate it: <code>JSWLogger.__dropInstance()</code></p>
+				<blockquote>
+					<p>Note that as this is a singleton (can only be instantiated once), so if you drop the instance, it will be dropped for all</p>
+				</blockquote>
+				<h2 id="logging">Logging</h2>
+				<p>The level logging hierarchy is as follows:</p>
+				<table>
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Level</th>
+							<th>Method</th>
+							<th>Uses</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Silly</td>
+							<td>6</td>
+							<td>Logger.silly</td>
+							<td>Some dummy logs, less relevants than a debug</td>
+						</tr>
+						<tr>
+							<td>Debug</td>
+							<td>5</td>
+							<td>Logger.debug</td>
+							<td>For debugging purposes</td>
+						</tr>
+						<tr>
+							<td>Verbose</td>
+							<td>4</td>
+							<td>Logger.verbose</td>
+							<td>For extended log messages</td>
+						</tr>
+						<tr>
+							<td>Log</td>
+							<td>3</td>
+							<td>Logger.log</td>
+							<td>The standar logging</td>
+						</tr>
+						<tr>
+							<td>Info</td>
+							<td>2</td>
+							<td>Logger.info</td>
+							<td>To show relevant information messages</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>Logger.inform</td>
+							<td>Works as an alias for &quot;info&quot;</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>Logger.information</td>
+							<td>Worksas an alias for &quot;info&quot;</td>
+						</tr>
+						<tr>
+							<td>Warn</td>
+							<td>1</td>
+							<td>Logger.warn</td>
+							<td>To show application warnings</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>Logger.warning</td>
+							<td>Works as an alias for &quot;warn&quot;</td>
+						</tr>
+						<tr>
+							<td>Error</td>
+							<td>0</td>
+							<td>Logger.error</td>
+							<td>To output error generated by the application</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>Logger.throw</td>
+							<td>Same as &quot;error&quot;, but throws an Exception is configured to</td>
+						</tr>
+					</tbody>
+				</table>
+				<p>The lower we set the level whe instanciating, the less methods will output something. Eg.:</p>
+				<pre><code class="lang-js">Logger.debug(<span class="hljs-string">"Not shown"</span>); <span class="hljs-comment">// -&gt; outputs nothing, as the default is log (2)</span>
+Logger.info(<span class="hljs-string">"Some informative message"</span>); <span class="hljs-comment">// -&gt; INFO: Some informative message</span>
+<span class="hljs-comment">// Can use interpolation</span>
+Logger.warn(<span class="hljs-string">"Be careful %s!"</span>, <span class="hljs-string">"Ryan"</span>); <span class="hljs-comment">// -&gt; WARN: Be careful Ryan!</span>
+Logger.error(<span class="hljs-string">"Line %d doesn't compile"</span>, <span class="hljs-number">562</span>); <span class="hljs-comment">// -&gt; ERROR: Line 562 doesn't compile</span>
+</code></pre>
 				<hr>
 				<h1 id="license">License</h1>
 				<p>MIT</p>
@@ -168,8 +207,23 @@ cursor.forEach(<span class="hljs-function"><span class="hljs-keyword">function</
 					<li class="globals  ">
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
+					<li class="label tsd-is-external">
+						<span>Internals</span>
+					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_filesystemstore_.html">"<wbr>File<wbr>System<wbr>Store"</a>
+						<a href="modules/_src_filesystemstore_.html">"src/<wbr>File<wbr>System<wbr>Store"</a>
+					</li>
+					<li class="label tsd-is-external">
+						<span>Externals</span>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_node_modules_jsw_logger_index_.html">"node_<wbr>modules/jsw-<wbr>logger/index"</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_node_modules_jsw_logger_src_jsw_logger_.html">"node_<wbr>modules/jsw-<wbr>logger/src/JSW-<wbr><wbr>Logger"</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_node_modules_jsw_logger_src_options_.html">"node_<wbr>modules/jsw-<wbr>logger/src/<wbr>Options"</a>
 					</li>
 				</ul>
 			</nav>

@@ -5,8 +5,2188 @@
 	"flags": {},
 	"children": [
 		{
+			"id": 101,
+			"name": "\"node_modules/jsw-logger/index\"",
+			"kind": 1,
+			"kindString": "External module",
+			"flags": {
+				"isExported": true,
+				"isExternal": true
+			},
+			"originalName": "/home/ubuntu/workspace/node_modules/jsw-logger/index.ts",
+			"sources": [
+				{
+					"fileName": "node_modules/jsw-logger/index.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 17,
+			"name": "\"node_modules/jsw-logger/src/JSW-Logger\"",
+			"kind": 1,
+			"kindString": "External module",
+			"flags": {
+				"isExported": true,
+				"isExternal": true
+			},
+			"originalName": "/home/ubuntu/workspace/node_modules/jsw-logger/src/JSW-Logger.ts",
+			"children": [
+				{
+					"id": 18,
+					"name": "JSWLogger",
+					"kind": 128,
+					"kindString": "Class",
+					"flags": {
+						"isExternal": true
+					},
+					"comment": {
+						"shortText": "JSWLogger",
+						"tags": [
+							{
+								"tag": "module",
+								"text": "JSWLogger"
+							},
+							{
+								"tag": "since",
+								"text": "0.0.1"
+							},
+							{
+								"tag": "author",
+								"text": "Eduardo Astolfi <eastolfi91@gmail.com>"
+							},
+							{
+								"tag": "copyright",
+								"text": "2016 Eduardo Astolfi <eastolfi91@gmail.com>"
+							},
+							{
+								"tag": "license",
+								"text": "MIT Licensed\n"
+							},
+							{
+								"tag": "classdesc",
+								"text": "Logging module singleton which writes in the console all warnings and erros\n"
+							}
+						]
+					},
+					"children": [
+						{
+							"id": 20,
+							"name": "constructor",
+							"kind": 512,
+							"kindString": "Constructor",
+							"flags": {
+								"isExternal": true
+							},
+							"signatures": [
+								{
+									"id": 21,
+									"name": "new JSWLogger",
+									"kind": 16384,
+									"kindString": "Constructor signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 22,
+											"name": "enforcer",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "reference",
+												"name": "Symbol"
+											}
+										},
+										{
+											"id": 23,
+											"name": "options",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "reference",
+												"name": "Object"
+											},
+											"defaultValue": " {}"
+										}
+									],
+									"type": {
+										"type": "reference",
+										"name": "JSWLogger",
+										"id": 18
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+									"line": 68,
+									"character": 45
+								}
+							]
+						},
+						{
+							"id": 19,
+							"name": "options",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isPrivate": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+									"line": 68,
+									"character": 19
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Options",
+								"id": 2
+							},
+							"defaultValue": " new Options()"
+						},
+						{
+							"id": 78,
+							"name": "instance",
+							"kind": 262144,
+							"kindString": "Accessor",
+							"flags": {
+								"isStatic": true,
+								"isExternal": true
+							},
+							"comment": {
+								"shortText": "Retrieves the current singleton instance, creating a new one if needed.",
+								"returns": "this - The singleton Instance\n",
+								"tags": [
+									{
+										"tag": "static",
+										"text": "\n"
+									}
+								]
+							},
+							"getSignature": [
+								{
+									"id": 79,
+									"name": "__get",
+									"kind": 524288,
+									"kindString": "Get signature",
+									"flags": {},
+									"comment": {
+										"shortText": "Retrieves the current singleton instance, creating a new one if needed.",
+										"returns": "this - The singleton Instance\n",
+										"tags": [
+											{
+												"tag": "static",
+												"text": "\n"
+											}
+										]
+									},
+									"type": {
+										"type": "reference",
+										"name": "JSWLogger",
+										"id": 18
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+									"line": 225,
+									"character": 23
+								}
+							]
+						},
+						{
+							"id": 24,
+							"name": "___log",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isPrivate": true,
+								"isExternal": true
+							},
+							"signatures": [
+								{
+									"id": 25,
+									"name": "___log",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 26,
+											"name": "level",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "any"
+											}
+										},
+										{
+											"id": 27,
+											"name": "message",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "string"
+											}
+										},
+										{
+											"id": 28,
+											"name": "options",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "reference",
+												"name": "Array",
+												"typeArguments": [
+													{
+														"type": "union",
+														"types": [
+															{
+																"type": "instrinct",
+																"name": "string"
+															},
+															{
+																"type": "instrinct",
+																"name": "number"
+															}
+														]
+													}
+												]
+											},
+											"defaultValue": " []"
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "instrinct",
+												"name": "string"
+											},
+											{
+												"type": "instrinct",
+												"name": "false"
+											}
+										]
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+									"line": 110,
+									"character": 17
+								}
+							]
+						},
+						{
+							"id": 33,
+							"name": "debug",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isExternal": true
+							},
+							"signatures": [
+								{
+									"id": 34,
+									"name": "debug",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 35,
+											"name": "message",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "string"
+											}
+										},
+										{
+											"id": 36,
+											"name": "options",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isRest": true
+											},
+											"type": {
+												"type": "reference",
+												"name": "Array",
+												"typeArguments": [
+													{
+														"type": "union",
+														"types": [
+															{
+																"type": "instrinct",
+																"name": "string"
+															},
+															{
+																"type": "instrinct",
+																"name": "number"
+															}
+														]
+													}
+												]
+											}
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "instrinct",
+												"name": "string"
+											},
+											{
+												"type": "instrinct",
+												"name": "false"
+											}
+										]
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+									"line": 158,
+									"character": 9
+								}
+							]
+						},
+						{
+							"id": 65,
+							"name": "error",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isExternal": true
+							},
+							"signatures": [
+								{
+									"id": 66,
+									"name": "error",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 67,
+											"name": "message",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "string"
+											}
+										},
+										{
+											"id": 68,
+											"name": "options",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isRest": true
+											},
+											"type": {
+												"type": "reference",
+												"name": "Array",
+												"typeArguments": [
+													{
+														"type": "union",
+														"types": [
+															{
+																"type": "instrinct",
+																"name": "string"
+															},
+															{
+																"type": "instrinct",
+																"name": "number"
+															}
+														]
+													}
+												]
+											}
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "instrinct",
+												"name": "string"
+											},
+											{
+												"type": "instrinct",
+												"name": "false"
+											}
+										]
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+									"line": 182,
+									"character": 9
+								}
+							]
+						},
+						{
+							"id": 45,
+							"name": "info",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isExternal": true
+							},
+							"signatures": [
+								{
+									"id": 46,
+									"name": "info",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 47,
+											"name": "message",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "string"
+											}
+										},
+										{
+											"id": 48,
+											"name": "options",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isRest": true
+											},
+											"type": {
+												"type": "reference",
+												"name": "Array",
+												"typeArguments": [
+													{
+														"type": "union",
+														"types": [
+															{
+																"type": "instrinct",
+																"name": "string"
+															},
+															{
+																"type": "instrinct",
+																"name": "number"
+															}
+														]
+													}
+												]
+											}
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "instrinct",
+												"name": "string"
+											},
+											{
+												"type": "instrinct",
+												"name": "false"
+											}
+										]
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+									"line": 167,
+									"character": 8
+								}
+							]
+						},
+						{
+							"id": 49,
+							"name": "inform",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isExternal": true
+							},
+							"signatures": [
+								{
+									"id": 50,
+									"name": "inform",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 51,
+											"name": "message",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "string"
+											}
+										},
+										{
+											"id": 52,
+											"name": "options",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isRest": true
+											},
+											"type": {
+												"type": "reference",
+												"name": "Array",
+												"typeArguments": [
+													{
+														"type": "union",
+														"types": [
+															{
+																"type": "instrinct",
+																"name": "string"
+															},
+															{
+																"type": "instrinct",
+																"name": "number"
+															}
+														]
+													}
+												]
+											}
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "instrinct",
+												"name": "string"
+											},
+											{
+												"type": "instrinct",
+												"name": "false"
+											}
+										]
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+									"line": 170,
+									"character": 10
+								}
+							]
+						},
+						{
+							"id": 53,
+							"name": "information",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isExternal": true
+							},
+							"signatures": [
+								{
+									"id": 54,
+									"name": "information",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 55,
+											"name": "message",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "string"
+											}
+										},
+										{
+											"id": 56,
+											"name": "options",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isRest": true
+											},
+											"type": {
+												"type": "reference",
+												"name": "Array",
+												"typeArguments": [
+													{
+														"type": "union",
+														"types": [
+															{
+																"type": "instrinct",
+																"name": "string"
+															},
+															{
+																"type": "instrinct",
+																"name": "number"
+															}
+														]
+													}
+												]
+											}
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "instrinct",
+												"name": "string"
+											},
+											{
+												"type": "instrinct",
+												"name": "false"
+											}
+										]
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+									"line": 173,
+									"character": 15
+								}
+							]
+						},
+						{
+							"id": 41,
+							"name": "log",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isExternal": true
+							},
+							"signatures": [
+								{
+									"id": 42,
+									"name": "log",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 43,
+											"name": "message",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "string"
+											}
+										},
+										{
+											"id": 44,
+											"name": "options",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isRest": true
+											},
+											"type": {
+												"type": "reference",
+												"name": "Array",
+												"typeArguments": [
+													{
+														"type": "union",
+														"types": [
+															{
+																"type": "instrinct",
+																"name": "string"
+															},
+															{
+																"type": "instrinct",
+																"name": "number"
+															}
+														]
+													}
+												]
+											}
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "instrinct",
+												"name": "string"
+											},
+											{
+												"type": "instrinct",
+												"name": "false"
+											}
+										]
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+									"line": 164,
+									"character": 7
+								}
+							]
+						},
+						{
+							"id": 69,
+							"name": "print",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isExternal": true
+							},
+							"signatures": [
+								{
+									"id": 70,
+									"name": "print",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 71,
+											"name": "level",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "instrinct",
+														"name": "string"
+													},
+													{
+														"type": "instrinct",
+														"name": "number"
+													}
+												]
+											}
+										},
+										{
+											"id": 72,
+											"name": "message",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "string"
+											}
+										},
+										{
+											"id": 73,
+											"name": "options",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isRest": true
+											},
+											"type": {
+												"type": "reference",
+												"name": "Array",
+												"typeArguments": [
+													{
+														"type": "union",
+														"types": [
+															{
+																"type": "instrinct",
+																"name": "string"
+															},
+															{
+																"type": "instrinct",
+																"name": "number"
+															}
+														]
+													}
+												]
+											}
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "instrinct",
+												"name": "string"
+											},
+											{
+												"type": "instrinct",
+												"name": "false"
+											}
+										]
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+									"line": 185,
+									"character": 9
+								}
+							]
+						},
+						{
+							"id": 29,
+							"name": "silly",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isExternal": true
+							},
+							"signatures": [
+								{
+									"id": 30,
+									"name": "silly",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 31,
+											"name": "message",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "string"
+											}
+										},
+										{
+											"id": 32,
+											"name": "options",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isRest": true
+											},
+											"type": {
+												"type": "reference",
+												"name": "Array",
+												"typeArguments": [
+													{
+														"type": "union",
+														"types": [
+															{
+																"type": "instrinct",
+																"name": "string"
+															},
+															{
+																"type": "instrinct",
+																"name": "number"
+															}
+														]
+													}
+												]
+											}
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "instrinct",
+												"name": "string"
+											},
+											{
+												"type": "instrinct",
+												"name": "false"
+											}
+										]
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+									"line": 155,
+									"character": 9
+								}
+							]
+						},
+						{
+							"id": 74,
+							"name": "throw",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isExternal": true
+							},
+							"signatures": [
+								{
+									"id": 75,
+									"name": "throw",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"comment": {
+										"shortText": "Method to throw a controlled exception, logging it to a log file.",
+										"tags": [
+											{
+												"tag": "method",
+												"text": "JSWLogger#throw\n"
+											}
+										]
+									},
+									"parameters": [
+										{
+											"id": 76,
+											"name": "error",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "The exception or message to be thrown."
+											},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "reference",
+														"name": "Error"
+													},
+													{
+														"type": "instrinct",
+														"name": "string"
+													}
+												]
+											}
+										},
+										{
+											"id": 77,
+											"name": "options",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isRest": true
+											},
+											"type": {
+												"type": "reference",
+												"name": "Array",
+												"typeArguments": [
+													{
+														"type": "union",
+														"types": [
+															{
+																"type": "instrinct",
+																"name": "string"
+															},
+															{
+																"type": "instrinct",
+																"name": "number"
+															}
+														]
+													}
+												]
+											}
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "instrinct",
+												"name": "string"
+											},
+											{
+												"type": "instrinct",
+												"name": "false"
+											}
+										]
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+									"line": 203,
+									"character": 9
+								}
+							]
+						},
+						{
+							"id": 37,
+							"name": "verbose",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isExternal": true
+							},
+							"signatures": [
+								{
+									"id": 38,
+									"name": "verbose",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 39,
+											"name": "message",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "string"
+											}
+										},
+										{
+											"id": 40,
+											"name": "options",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isRest": true
+											},
+											"type": {
+												"type": "reference",
+												"name": "Array",
+												"typeArguments": [
+													{
+														"type": "union",
+														"types": [
+															{
+																"type": "instrinct",
+																"name": "string"
+															},
+															{
+																"type": "instrinct",
+																"name": "number"
+															}
+														]
+													}
+												]
+											}
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "instrinct",
+												"name": "string"
+											},
+											{
+												"type": "instrinct",
+												"name": "false"
+											}
+										]
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+									"line": 161,
+									"character": 11
+								}
+							]
+						},
+						{
+							"id": 57,
+							"name": "warn",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isExternal": true
+							},
+							"signatures": [
+								{
+									"id": 58,
+									"name": "warn",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 59,
+											"name": "message",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "string"
+											}
+										},
+										{
+											"id": 60,
+											"name": "options",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isRest": true
+											},
+											"type": {
+												"type": "reference",
+												"name": "Array",
+												"typeArguments": [
+													{
+														"type": "union",
+														"types": [
+															{
+																"type": "instrinct",
+																"name": "string"
+															},
+															{
+																"type": "instrinct",
+																"name": "number"
+															}
+														]
+													}
+												]
+											}
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "instrinct",
+												"name": "string"
+											},
+											{
+												"type": "instrinct",
+												"name": "false"
+											}
+										]
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+									"line": 176,
+									"character": 8
+								}
+							]
+						},
+						{
+							"id": 61,
+							"name": "warning",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isExternal": true
+							},
+							"signatures": [
+								{
+									"id": 62,
+									"name": "warning",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 63,
+											"name": "message",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "instrinct",
+												"name": "string"
+											}
+										},
+										{
+											"id": 64,
+											"name": "options",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isRest": true
+											},
+											"type": {
+												"type": "reference",
+												"name": "Array",
+												"typeArguments": [
+													{
+														"type": "union",
+														"types": [
+															{
+																"type": "instrinct",
+																"name": "string"
+															},
+															{
+																"type": "instrinct",
+																"name": "number"
+															}
+														]
+													}
+												]
+											}
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "instrinct",
+												"name": "string"
+											},
+											{
+												"type": "instrinct",
+												"name": "false"
+											}
+										]
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+									"line": 179,
+									"character": 11
+								}
+							]
+						},
+						{
+							"id": 83,
+							"name": "___dropInstance",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isStatic": true,
+								"isExternal": true
+							},
+							"signatures": [
+								{
+									"id": 84,
+									"name": "___dropInstance",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"comment": {
+										"shortText": "Destroy the current singleton instance",
+										"tags": [
+											{
+												"tag": "static",
+												"text": "\n"
+											}
+										]
+									},
+									"type": {
+										"type": "instrinct",
+										"name": "void"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+									"line": 259,
+									"character": 25
+								}
+							]
+						},
+						{
+							"id": 80,
+							"name": "getInstance",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isStatic": true,
+								"isExternal": true
+							},
+							"signatures": [
+								{
+									"id": 81,
+									"name": "getInstance",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"comment": {
+										"shortText": "Retrieves the current singleton instance, creating a new one if needed.\nIt allows, when creating the first time, a set of options. Otherwise, it will return the singleton instance",
+										"returns": "this - The singleton Instance\n",
+										"tags": [
+											{
+												"tag": "static",
+												"text": "\n"
+											}
+										]
+									},
+									"parameters": [
+										{
+											"id": 82,
+											"name": "options",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "reference",
+												"name": "Object"
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"name": "JSWLogger",
+										"id": 18
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+									"line": 244,
+									"character": 22
+								}
+							]
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"kind": 512,
+							"children": [
+								20
+							]
+						},
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								19
+							]
+						},
+						{
+							"title": "Accessors",
+							"kind": 262144,
+							"children": [
+								78
+							]
+						},
+						{
+							"title": "Methods",
+							"kind": 2048,
+							"children": [
+								24,
+								33,
+								65,
+								45,
+								49,
+								53,
+								41,
+								69,
+								29,
+								74,
+								37,
+								57,
+								61,
+								83,
+								80
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+							"line": 67,
+							"character": 15
+						}
+					]
+				},
+				{
+					"id": 96,
+					"name": "LEVELS_STR",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExternal": true
+					},
+					"sources": [
+						{
+							"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+							"line": 23,
+							"character": 16
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "Array",
+						"typeArguments": [
+							{
+								"type": "instrinct",
+								"name": "string"
+							}
+						]
+					},
+					"defaultValue": " [\"ERROR\", \"WARN\", \"INFO\", \"LOG\", \"VERBOSE\", \"DEBUG\", \"SILLY\"]"
+				},
+				{
+					"id": 85,
+					"name": "TRANSPORT_PREFIX",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExternal": true
+					},
+					"sources": [
+						{
+							"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+							"line": 7,
+							"character": 22
+						}
+					],
+					"type": {
+						"type": "stringLiteral",
+						"value": "EAMP_LOGGER"
+					},
+					"defaultValue": "\"EAMP_LOGGER\""
+				},
+				{
+					"id": 86,
+					"name": "singleton",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExternal": true
+					},
+					"sources": [
+						{
+							"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+							"line": 10,
+							"character": 15
+						}
+					],
+					"type": {
+						"type": "instrinct",
+						"name": "any"
+					},
+					"defaultValue": " Symbol()"
+				},
+				{
+					"id": 87,
+					"name": "singletonEnforcer",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExternal": true
+					},
+					"sources": [
+						{
+							"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+							"line": 11,
+							"character": 23
+						}
+					],
+					"type": {
+						"type": "instrinct",
+						"name": "any"
+					},
+					"defaultValue": " Symbol()"
+				},
+				{
+					"id": 97,
+					"name": "interpolate",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 98,
+							"name": "interpolate",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 99,
+									"name": "string",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "instrinct",
+										"name": "any"
+									}
+								},
+								{
+									"id": 100,
+									"name": "values",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "instrinct",
+										"name": "any"
+									}
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "any"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+							"line": 25,
+							"character": 20
+						}
+					]
+				},
+				{
+					"id": 88,
+					"name": "LEVELS",
+					"kind": 2097152,
+					"kindString": "Object literal",
+					"flags": {
+						"isExternal": true
+					},
+					"children": [
+						{
+							"id": 90,
+							"name": "debug",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+									"line": 15,
+									"character": 11
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "number"
+							},
+							"defaultValue": "5"
+						},
+						{
+							"id": 95,
+							"name": "error",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+									"line": 20,
+									"character": 11
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "number"
+							},
+							"defaultValue": "0"
+						},
+						{
+							"id": 93,
+							"name": "info",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+									"line": 18,
+									"character": 10
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "number"
+							},
+							"defaultValue": "2"
+						},
+						{
+							"id": 92,
+							"name": "log",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+									"line": 17,
+									"character": 9
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "number"
+							},
+							"defaultValue": "3"
+						},
+						{
+							"id": 89,
+							"name": "silly",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+									"line": 14,
+									"character": 11
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "number"
+							},
+							"defaultValue": "6"
+						},
+						{
+							"id": 91,
+							"name": "verbose",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+									"line": 16,
+									"character": 13
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "number"
+							},
+							"defaultValue": "4"
+						},
+						{
+							"id": 94,
+							"name": "warn",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+									"line": 19,
+									"character": 10
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "number"
+							},
+							"defaultValue": "1"
+						}
+					],
+					"groups": [
+						{
+							"title": "Variables",
+							"kind": 32,
+							"children": [
+								90,
+								95,
+								93,
+								92,
+								89,
+								91,
+								94
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+							"line": 13,
+							"character": 12
+						}
+					],
+					"type": {
+						"type": "instrinct",
+						"name": "object"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Classes",
+					"kind": 128,
+					"children": [
+						18
+					]
+				},
+				{
+					"title": "Variables",
+					"kind": 32,
+					"children": [
+						96,
+						85,
+						86,
+						87
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						97
+					]
+				},
+				{
+					"title": "Object literals",
+					"kind": 2097152,
+					"children": [
+						88
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "node_modules/jsw-logger/src/JSW-Logger.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
 			"id": 1,
-			"name": "\"FileSystemStore\"",
+			"name": "\"node_modules/jsw-logger/src/Options\"",
+			"kind": 1,
+			"kindString": "External module",
+			"flags": {
+				"isExported": true,
+				"isExternal": true
+			},
+			"originalName": "/home/ubuntu/workspace/node_modules/jsw-logger/src/Options.ts",
+			"children": [
+				{
+					"id": 2,
+					"name": "Options",
+					"kind": 128,
+					"kindString": "Class",
+					"flags": {
+						"isExternal": true
+					},
+					"comment": {
+						"shortText": "Options",
+						"tags": [
+							{
+								"tag": "since",
+								"text": "1.2.0"
+							},
+							{
+								"tag": "author",
+								"text": "Eduardo Astolfi <eastolfi91@gmail.com>"
+							},
+							{
+								"tag": "copyright",
+								"text": "2017 Eduardo Astolfi <eastolfi91@gmail.com>"
+							},
+							{
+								"tag": "license",
+								"text": "MIT Licensed\n"
+							},
+							{
+								"tag": "classdesc",
+								"text": "Option class ensuring the configuration\n"
+							}
+						]
+					},
+					"children": [
+						{
+							"id": 14,
+							"name": "constructor",
+							"kind": 512,
+							"kindString": "Constructor",
+							"flags": {
+								"isExternal": true
+							},
+							"signatures": [
+								{
+									"id": 15,
+									"name": "new Options",
+									"kind": 16384,
+									"kindString": "Constructor signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 16,
+											"name": "options",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isOptional": true
+											},
+											"type": {
+												"type": "instrinct",
+												"name": "any"
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"name": "Options",
+										"id": 2
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/Options.ts",
+									"line": 26,
+									"character": 6
+								}
+							]
+						},
+						{
+							"id": 7,
+							"name": "handledExceptionsLogPath",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExternal": true,
+								"isPublic": true
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/Options.ts",
+									"line": 18,
+									"character": 35
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "string"
+							}
+						},
+						{
+							"id": 4,
+							"name": "hideAllLogs",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExternal": true,
+								"isPublic": true
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/Options.ts",
+									"line": 15,
+									"character": 22
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "boolean"
+							}
+						},
+						{
+							"id": 5,
+							"name": "hideLevelLog",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExternal": true,
+								"isPublic": true
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/Options.ts",
+									"line": 16,
+									"character": 23
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "boolean"
+							}
+						},
+						{
+							"id": 3,
+							"name": "level",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExternal": true,
+								"isPublic": true
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/Options.ts",
+									"line": 14,
+									"character": 16
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "number"
+							}
+						},
+						{
+							"id": 6,
+							"name": "throwError",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExternal": true,
+								"isPublic": true
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/Options.ts",
+									"line": 17,
+									"character": 21
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "boolean"
+							}
+						},
+						{
+							"id": 8,
+							"name": "___defaultOptions",
+							"kind": 2097152,
+							"kindString": "Object literal",
+							"flags": {
+								"isPrivate": true,
+								"isExternal": true
+							},
+							"children": [
+								{
+									"id": 13,
+									"name": "handledExceptionsLogPath",
+									"kind": 32,
+									"kindString": "Variable",
+									"flags": {
+										"isExternal": true
+									},
+									"sources": [
+										{
+											"fileName": "node_modules/jsw-logger/src/Options.ts",
+											"line": 25,
+											"character": 32
+										}
+									],
+									"type": {
+										"type": "instrinct",
+										"name": "string"
+									},
+									"defaultValue": "\"/../logs/handledException.log\""
+								},
+								{
+									"id": 10,
+									"name": "hideAllLogs",
+									"kind": 32,
+									"kindString": "Variable",
+									"flags": {
+										"isExternal": true
+									},
+									"sources": [
+										{
+											"fileName": "node_modules/jsw-logger/src/Options.ts",
+											"line": 22,
+											"character": 19
+										}
+									],
+									"type": {
+										"type": "instrinct",
+										"name": "boolean"
+									},
+									"defaultValue": "false"
+								},
+								{
+									"id": 11,
+									"name": "hideLevelLog",
+									"kind": 32,
+									"kindString": "Variable",
+									"flags": {
+										"isExternal": true
+									},
+									"sources": [
+										{
+											"fileName": "node_modules/jsw-logger/src/Options.ts",
+											"line": 23,
+											"character": 20
+										}
+									],
+									"type": {
+										"type": "instrinct",
+										"name": "boolean"
+									},
+									"defaultValue": "false"
+								},
+								{
+									"id": 9,
+									"name": "level",
+									"kind": 32,
+									"kindString": "Variable",
+									"flags": {
+										"isExternal": true
+									},
+									"sources": [
+										{
+											"fileName": "node_modules/jsw-logger/src/Options.ts",
+											"line": 21,
+											"character": 13
+										}
+									],
+									"type": {
+										"type": "instrinct",
+										"name": "number"
+									},
+									"defaultValue": "2"
+								},
+								{
+									"id": 12,
+									"name": "throwError",
+									"kind": 32,
+									"kindString": "Variable",
+									"flags": {
+										"isExternal": true
+									},
+									"sources": [
+										{
+											"fileName": "node_modules/jsw-logger/src/Options.ts",
+											"line": 24,
+											"character": 18
+										}
+									],
+									"type": {
+										"type": "instrinct",
+										"name": "boolean"
+									},
+									"defaultValue": "true"
+								}
+							],
+							"groups": [
+								{
+									"title": "Variables",
+									"kind": 32,
+									"children": [
+										13,
+										10,
+										11,
+										9,
+										12
+									]
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/jsw-logger/src/Options.ts",
+									"line": 20,
+									"character": 28
+								}
+							],
+							"type": {
+								"type": "instrinct",
+								"name": "object"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"kind": 512,
+							"children": [
+								14
+							]
+						},
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								7,
+								4,
+								5,
+								3,
+								6
+							]
+						},
+						{
+							"title": "Object literals",
+							"kind": 2097152,
+							"children": [
+								8
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "node_modules/jsw-logger/src/Options.ts",
+							"line": 13,
+							"character": 13
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Classes",
+					"kind": 128,
+					"children": [
+						2
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "node_modules/jsw-logger/src/Options.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 102,
+			"name": "\"src/FileSystemStore\"",
 			"kind": 1,
 			"kindString": "External module",
 			"flags": {
@@ -15,14 +2195,11 @@
 			"originalName": "/home/ubuntu/workspace/src/FileSystemStore.ts",
 			"children": [
 				{
-					"id": 10,
+					"id": 111,
 					"name": "FileSystemStore",
 					"kind": 128,
 					"kindString": "Class",
-					"flags": {
-						"isExported": true,
-						"hasExportAssignment": true
-					},
+					"flags": {},
 					"comment": {
 						"shortText": "FileSystemStore",
 						"tags": [
@@ -66,23 +2243,21 @@
 					},
 					"children": [
 						{
-							"id": 14,
+							"id": 115,
 							"name": "constructor",
 							"kind": 512,
 							"kindString": "Constructor",
-							"flags": {
-								"isExported": true
-							},
+							"flags": {},
 							"signatures": [
 								{
-									"id": 15,
+									"id": 116,
 									"name": "new FileSystemStore",
 									"kind": 16384,
 									"kindString": "Constructor signature",
 									"flags": {},
 									"parameters": [
 										{
-											"id": 16,
+											"id": 117,
 											"name": "options",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -90,7 +2265,7 @@
 											"type": {
 												"type": "reference",
 												"name": "Options",
-												"id": 2
+												"id": 103
 											},
 											"defaultValue": " new Options()"
 										}
@@ -98,30 +2273,29 @@
 									"type": {
 										"type": "reference",
 										"name": "FileSystemStore",
-										"id": 10
+										"id": 111
 									}
 								}
 							],
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 61,
 									"character": 37
 								}
 							]
 						},
 						{
-							"id": 12,
+							"id": 113,
 							"name": "defaultOptions",
 							"kind": 1024,
 							"kindString": "Property",
 							"flags": {
-								"isPrivate": true,
-								"isExported": true
+								"isPrivate": true
 							},
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 55,
 									"character": 26
 								}
@@ -129,22 +2303,21 @@
 							"type": {
 								"type": "reference",
 								"name": "Options",
-								"id": 2
+								"id": 103
 							},
 							"defaultValue": " new Options({\n        ddbb_path: 'db',\n        collection_extension: 'json',\n        sync: false\n    })"
 						},
 						{
-							"id": 11,
+							"id": 112,
 							"name": "logger",
 							"kind": 1024,
 							"kindString": "Property",
 							"flags": {
-								"isPrivate": true,
-								"isExported": true
+								"isPrivate": true
 							},
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 54,
 									"character": 18
 								}
@@ -155,16 +2328,14 @@
 							}
 						},
 						{
-							"id": 13,
+							"id": 114,
 							"name": "options",
 							"kind": 1024,
 							"kindString": "Property",
-							"flags": {
-								"isExported": true
-							},
+							"flags": {},
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 61,
 									"character": 11
 								}
@@ -172,21 +2343,19 @@
 							"type": {
 								"type": "reference",
 								"name": "Options",
-								"id": 2
+								"id": 103
 							},
 							"defaultValue": " new Options()"
 						},
 						{
-							"id": 58,
+							"id": 159,
 							"name": "all",
 							"kind": 2048,
 							"kindString": "Method",
-							"flags": {
-								"isExported": true
-							},
+							"flags": {},
 							"signatures": [
 								{
-									"id": 59,
+									"id": 160,
 									"name": "all",
 									"kind": 4096,
 									"kindString": "Call signature",
@@ -196,7 +2365,7 @@
 									},
 									"parameters": [
 										{
-											"id": 60,
+											"id": 161,
 											"name": "event",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -215,30 +2384,28 @@
 							],
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 337,
 									"character": 7
 								}
 							]
 						},
 						{
-							"id": 76,
+							"id": 177,
 							"name": "backup",
 							"kind": 2048,
 							"kindString": "Method",
-							"flags": {
-								"isExported": true
-							},
+							"flags": {},
 							"signatures": [
 								{
-									"id": 77,
+									"id": 178,
 									"name": "backup",
 									"kind": 4096,
 									"kindString": "Call signature",
 									"flags": {},
 									"parameters": [
 										{
-											"id": 78,
+											"id": 179,
 											"name": "event",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -257,30 +2424,28 @@
 							],
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 526,
 									"character": 10
 								}
 							]
 						},
 						{
-							"id": 79,
+							"id": 180,
 							"name": "backups",
 							"kind": 2048,
 							"kindString": "Method",
-							"flags": {
-								"isExported": true
-							},
+							"flags": {},
 							"signatures": [
 								{
-									"id": 80,
+									"id": 181,
 									"name": "backups",
 									"kind": 4096,
 									"kindString": "Call signature",
 									"flags": {},
 									"parameters": [
 										{
-											"id": 81,
+											"id": 182,
 											"name": "event",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -299,23 +2464,21 @@
 							],
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 531,
 									"character": 11
 								}
 							]
 						},
 						{
-							"id": 49,
+							"id": 150,
 							"name": "createCollection",
 							"kind": 2048,
 							"kindString": "Method",
-							"flags": {
-								"isExported": true
-							},
+							"flags": {},
 							"signatures": [
 								{
-									"id": 50,
+									"id": 151,
 									"name": "createCollection",
 									"kind": 4096,
 									"kindString": "Call signature",
@@ -336,7 +2499,7 @@
 									},
 									"parameters": [
 										{
-											"id": 51,
+											"id": 152,
 											"name": "event",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -358,31 +2521,30 @@
 							],
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 278,
 									"character": 20
 								}
 							]
 						},
 						{
-							"id": 31,
+							"id": 132,
 							"name": "createFile",
 							"kind": 2048,
 							"kindString": "Method",
 							"flags": {
-								"isPrivate": true,
-								"isExported": true
+								"isPrivate": true
 							},
 							"signatures": [
 								{
-									"id": 32,
+									"id": 133,
 									"name": "createFile",
 									"kind": 4096,
 									"kindString": "Call signature",
 									"flags": {},
 									"parameters": [
 										{
-											"id": 33,
+											"id": 134,
 											"name": "path",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -401,31 +2563,30 @@
 							],
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 155,
 									"character": 22
 								}
 							]
 						},
 						{
-							"id": 24,
+							"id": 125,
 							"name": "ensureDirectory",
 							"kind": 2048,
 							"kindString": "Method",
 							"flags": {
-								"isPrivate": true,
-								"isExported": true
+								"isPrivate": true
 							},
 							"signatures": [
 								{
-									"id": 25,
+									"id": 126,
 									"name": "ensureDirectory",
 									"kind": 4096,
 									"kindString": "Call signature",
 									"flags": {},
 									"parameters": [
 										{
-											"id": 26,
+											"id": 127,
 											"name": "path",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -436,7 +2597,7 @@
 											}
 										},
 										{
-											"id": 27,
+											"id": 128,
 											"name": "root",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -456,31 +2617,30 @@
 							],
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 101,
 									"character": 27
 								}
 							]
 						},
 						{
-							"id": 20,
+							"id": 121,
 							"name": "ensureDirectorySync",
 							"kind": 2048,
 							"kindString": "Method",
 							"flags": {
-								"isPrivate": true,
-								"isExported": true
+								"isPrivate": true
 							},
 							"signatures": [
 								{
-									"id": 21,
+									"id": 122,
 									"name": "ensureDirectorySync",
 									"kind": 4096,
 									"kindString": "Call signature",
 									"flags": {},
 									"parameters": [
 										{
-											"id": 22,
+											"id": 123,
 											"name": "path",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -492,7 +2652,7 @@
 											"defaultValue": "\"\""
 										},
 										{
-											"id": 23,
+											"id": 124,
 											"name": "root",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -512,23 +2672,21 @@
 							],
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 89,
 									"character": 31
 								}
 							]
 						},
 						{
-							"id": 73,
+							"id": 174,
 							"name": "ensureIndex",
 							"kind": 2048,
 							"kindString": "Method",
-							"flags": {
-								"isExported": true
-							},
+							"flags": {},
 							"signatures": [
 								{
-									"id": 74,
+									"id": 175,
 									"name": "ensureIndex",
 									"kind": 4096,
 									"kindString": "Call signature",
@@ -538,7 +2696,7 @@
 									},
 									"parameters": [
 										{
-											"id": 75,
+											"id": 176,
 											"name": "event",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -557,31 +2715,30 @@
 							],
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 521,
 									"character": 15
 								}
 							]
 						},
 						{
-							"id": 28,
+							"id": 129,
 							"name": "existsFile",
 							"kind": 2048,
 							"kindString": "Method",
 							"flags": {
-								"isPrivate": true,
-								"isExported": true
+								"isPrivate": true
 							},
 							"signatures": [
 								{
-									"id": 29,
+									"id": 130,
 									"name": "existsFile",
 									"kind": 4096,
 									"kindString": "Call signature",
 									"flags": {},
 									"parameters": [
 										{
-											"id": 30,
+											"id": 131,
 											"name": "filename",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -600,23 +2757,21 @@
 							],
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 119,
 									"character": 22
 								}
 							]
 						},
 						{
-							"id": 61,
+							"id": 162,
 							"name": "find",
 							"kind": 2048,
 							"kindString": "Method",
-							"flags": {
-								"isExported": true
-							},
+							"flags": {},
 							"signatures": [
 								{
-									"id": 62,
+									"id": 163,
 									"name": "find",
 									"kind": 4096,
 									"kindString": "Call signature",
@@ -649,7 +2804,7 @@
 									},
 									"parameters": [
 										{
-											"id": 63,
+											"id": 164,
 											"name": "event",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -671,23 +2826,21 @@
 							],
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 356,
 									"character": 8
 								}
 							]
 						},
 						{
-							"id": 64,
+							"id": 165,
 							"name": "findOne",
 							"kind": 2048,
 							"kindString": "Method",
-							"flags": {
-								"isExported": true
-							},
+							"flags": {},
 							"signatures": [
 								{
-									"id": 65,
+									"id": 166,
 									"name": "findOne",
 									"kind": 4096,
 									"kindString": "Call signature",
@@ -720,7 +2873,7 @@
 									},
 									"parameters": [
 										{
-											"id": 66,
+											"id": 167,
 											"name": "event",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -742,23 +2895,21 @@
 							],
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 453,
 									"character": 11
 								}
 							]
 						},
 						{
-							"id": 45,
+							"id": 146,
 							"name": "getCollectionPath",
 							"kind": 2048,
 							"kindString": "Method",
-							"flags": {
-								"isExported": true
-							},
+							"flags": {},
 							"signatures": [
 								{
-									"id": 46,
+									"id": 147,
 									"name": "getCollectionPath",
 									"kind": 4096,
 									"kindString": "Call signature",
@@ -775,7 +2926,7 @@
 									},
 									"parameters": [
 										{
-											"id": 47,
+											"id": 148,
 											"name": "ddbb_name",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -789,7 +2940,7 @@
 											}
 										},
 										{
-											"id": 48,
+											"id": 149,
 											"name": "coll_name",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -811,24 +2962,23 @@
 							],
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 253,
 									"character": 21
 								}
 							]
 						},
 						{
-							"id": 17,
+							"id": 118,
 							"name": "handleError",
 							"kind": 2048,
 							"kindString": "Method",
 							"flags": {
-								"isPrivate": true,
-								"isExported": true
+								"isPrivate": true
 							},
 							"signatures": [
 								{
-									"id": 18,
+									"id": 119,
 									"name": "handleError",
 									"kind": 4096,
 									"kindString": "Call signature",
@@ -838,7 +2988,7 @@
 									},
 									"parameters": [
 										{
-											"id": 19,
+											"id": 120,
 											"name": "error",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -857,23 +3007,21 @@
 							],
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 84,
 									"character": 23
 								}
 							]
 						},
 						{
-							"id": 52,
+							"id": 153,
 							"name": "insert",
 							"kind": 2048,
 							"kindString": "Method",
-							"flags": {
-								"isExported": true
-							},
+							"flags": {},
 							"signatures": [
 								{
-									"id": 53,
+									"id": 154,
 									"name": "insert",
 									"kind": 4096,
 									"kindString": "Call signature",
@@ -894,7 +3042,7 @@
 									},
 									"parameters": [
 										{
-											"id": 54,
+											"id": 155,
 											"name": "event",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -916,31 +3064,30 @@
 							],
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 318,
 									"character": 10
 								}
 							]
 						},
 						{
-							"id": 38,
+							"id": 139,
 							"name": "persist",
 							"kind": 2048,
 							"kindString": "Method",
 							"flags": {
-								"isPrivate": true,
-								"isExported": true
+								"isPrivate": true
 							},
 							"signatures": [
 								{
-									"id": 39,
+									"id": 140,
 									"name": "persist",
 									"kind": 4096,
 									"kindString": "Call signature",
 									"flags": {},
 									"parameters": [
 										{
-											"id": 40,
+											"id": 141,
 											"name": "collectionPath",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -951,7 +3098,7 @@
 											}
 										},
 										{
-											"id": 41,
+											"id": 142,
 											"name": "documents",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -971,31 +3118,30 @@
 							],
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 183,
 									"character": 19
 								}
 							]
 						},
 						{
-							"id": 42,
+							"id": 143,
 							"name": "readFile",
 							"kind": 2048,
 							"kindString": "Method",
 							"flags": {
-								"isPrivate": true,
-								"isExported": true
+								"isPrivate": true
 							},
 							"signatures": [
 								{
-									"id": 43,
+									"id": 144,
 									"name": "readFile",
 									"kind": 4096,
 									"kindString": "Call signature",
 									"flags": {},
 									"parameters": [
 										{
-											"id": 44,
+											"id": 145,
 											"name": "path",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -1014,23 +3160,21 @@
 							],
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 217,
 									"character": 20
 								}
 							]
 						},
 						{
-							"id": 70,
+							"id": 171,
 							"name": "remove",
 							"kind": 2048,
 							"kindString": "Method",
-							"flags": {
-								"isExported": true
-							},
+							"flags": {},
 							"signatures": [
 								{
-									"id": 71,
+									"id": 172,
 									"name": "remove",
 									"kind": 4096,
 									"kindString": "Call signature",
@@ -1063,7 +3207,7 @@
 									},
 									"parameters": [
 										{
-											"id": 72,
+											"id": 173,
 											"name": "event",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -1085,30 +3229,28 @@
 							],
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 508,
 									"character": 10
 								}
 							]
 						},
 						{
-							"id": 82,
+							"id": 183,
 							"name": "removeBackup",
 							"kind": 2048,
 							"kindString": "Method",
-							"flags": {
-								"isExported": true
-							},
+							"flags": {},
 							"signatures": [
 								{
-									"id": 83,
+									"id": 184,
 									"name": "removeBackup",
 									"kind": 4096,
 									"kindString": "Call signature",
 									"flags": {},
 									"parameters": [
 										{
-											"id": 84,
+											"id": 185,
 											"name": "event",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -1127,30 +3269,28 @@
 							],
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 536,
 									"character": 16
 								}
 							]
 						},
 						{
-							"id": 85,
+							"id": 186,
 							"name": "restore",
 							"kind": 2048,
 							"kindString": "Method",
-							"flags": {
-								"isExported": true
-							},
+							"flags": {},
 							"signatures": [
 								{
-									"id": 86,
+									"id": 187,
 									"name": "restore",
 									"kind": 4096,
 									"kindString": "Call signature",
 									"flags": {},
 									"parameters": [
 										{
-											"id": 87,
+											"id": 188,
 											"name": "event",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -1169,30 +3309,28 @@
 							],
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 541,
 									"character": 11
 								}
 							]
 						},
 						{
-							"id": 55,
+							"id": 156,
 							"name": "save",
 							"kind": 2048,
 							"kindString": "Method",
-							"flags": {
-								"isExported": true
-							},
+							"flags": {},
 							"signatures": [
 								{
-									"id": 56,
+									"id": 157,
 									"name": "save",
 									"kind": 4096,
 									"kindString": "Call signature",
 									"flags": {},
 									"parameters": [
 										{
-											"id": 57,
+											"id": 158,
 											"name": "event",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -1211,23 +3349,21 @@
 							],
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 328,
 									"character": 8
 								}
 							]
 						},
 						{
-							"id": 67,
+							"id": 168,
 							"name": "update",
 							"kind": 2048,
 							"kindString": "Method",
-							"flags": {
-								"isExported": true
-							},
+							"flags": {},
 							"signatures": [
 								{
-									"id": 68,
+									"id": 169,
 									"name": "update",
 									"kind": 4096,
 									"kindString": "Call signature",
@@ -1264,7 +3400,7 @@
 									},
 									"parameters": [
 										{
-											"id": 69,
+											"id": 170,
 											"name": "event",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -1286,31 +3422,30 @@
 							],
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 480,
 									"character": 10
 								}
 							]
 						},
 						{
-							"id": 34,
+							"id": 135,
 							"name": "writeFile",
 							"kind": 2048,
 							"kindString": "Method",
 							"flags": {
-								"isPrivate": true,
-								"isExported": true
+								"isPrivate": true
 							},
 							"signatures": [
 								{
-									"id": 35,
+									"id": 136,
 									"name": "writeFile",
 									"kind": 4096,
 									"kindString": "Call signature",
 									"flags": {},
 									"parameters": [
 										{
-											"id": 36,
+											"id": 137,
 											"name": "path",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -1321,7 +3456,7 @@
 											}
 										},
 										{
-											"id": 37,
+											"id": 138,
 											"name": "content",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -1341,7 +3476,7 @@
 							],
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 159,
 									"character": 21
 								}
@@ -1353,78 +3488,78 @@
 							"title": "Constructors",
 							"kind": 512,
 							"children": [
-								14
+								115
 							]
 						},
 						{
 							"title": "Properties",
 							"kind": 1024,
 							"children": [
-								12,
-								11,
-								13
+								113,
+								112,
+								114
 							]
 						},
 						{
 							"title": "Methods",
 							"kind": 2048,
 							"children": [
-								58,
-								76,
-								79,
-								49,
-								31,
-								24,
-								20,
-								73,
-								28,
-								61,
-								64,
-								45,
-								17,
-								52,
-								38,
-								42,
-								70,
-								82,
-								85,
-								55,
-								67,
-								34
+								159,
+								177,
+								180,
+								150,
+								132,
+								125,
+								121,
+								174,
+								129,
+								162,
+								165,
+								146,
+								118,
+								153,
+								139,
+								143,
+								171,
+								183,
+								186,
+								156,
+								168,
+								135
 							]
 						}
 					],
 					"sources": [
 						{
-							"fileName": "FileSystemStore.ts",
+							"fileName": "src/FileSystemStore.ts",
 							"line": 53,
 							"character": 21
 						}
 					]
 				},
 				{
-					"id": 2,
+					"id": 103,
 					"name": "Options",
 					"kind": 128,
 					"kindString": "Class",
 					"flags": {},
 					"children": [
 						{
-							"id": 7,
+							"id": 108,
 							"name": "constructor",
 							"kind": 512,
 							"kindString": "Constructor",
 							"flags": {},
 							"signatures": [
 								{
-									"id": 8,
+									"id": 109,
 									"name": "new Options",
 									"kind": 16384,
 									"kindString": "Constructor signature",
 									"flags": {},
 									"parameters": [
 										{
-											"id": 9,
+											"id": 110,
 											"name": "options",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -1440,27 +3575,27 @@
 									"type": {
 										"type": "reference",
 										"name": "Options",
-										"id": 2
+										"id": 103
 									}
 								}
 							],
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 26,
 									"character": 16
 								}
 							]
 						},
 						{
-							"id": 4,
+							"id": 105,
 							"name": "collection_extension",
 							"kind": 1024,
 							"kindString": "Property",
 							"flags": {},
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 24,
 									"character": 24
 								}
@@ -1471,14 +3606,14 @@
 							}
 						},
 						{
-							"id": 3,
+							"id": 104,
 							"name": "ddbb_path",
 							"kind": 1024,
 							"kindString": "Property",
 							"flags": {},
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 23,
 									"character": 13
 								}
@@ -1489,14 +3624,14 @@
 							}
 						},
 						{
-							"id": 6,
+							"id": 107,
 							"name": "log",
 							"kind": 1024,
 							"kindString": "Property",
 							"flags": {},
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 26,
 									"character": 7
 								}
@@ -1507,14 +3642,14 @@
 							}
 						},
 						{
-							"id": 5,
+							"id": 106,
 							"name": "sync",
 							"kind": 1024,
 							"kindString": "Property",
 							"flags": {},
 							"sources": [
 								{
-									"fileName": "FileSystemStore.ts",
+									"fileName": "src/FileSystemStore.ts",
 									"line": 25,
 									"character": 8
 								}
@@ -1530,23 +3665,23 @@
 							"title": "Constructors",
 							"kind": 512,
 							"children": [
-								7
+								108
 							]
 						},
 						{
 							"title": "Properties",
 							"kind": 1024,
 							"children": [
-								4,
-								3,
-								6,
-								5
+								105,
+								104,
+								107,
+								106
 							]
 						}
 					],
 					"sources": [
 						{
-							"fileName": "FileSystemStore.ts",
+							"fileName": "src/FileSystemStore.ts",
 							"line": 22,
 							"character": 13
 						}
@@ -1558,14 +3693,14 @@
 					"title": "Classes",
 					"kind": 128,
 					"children": [
-						10,
-						2
+						111,
+						103
 					]
 				}
 			],
 			"sources": [
 				{
-					"fileName": "FileSystemStore.ts",
+					"fileName": "src/FileSystemStore.ts",
 					"line": 1,
 					"character": 0
 				}
@@ -1577,7 +3712,10 @@
 			"title": "External modules",
 			"kind": 1,
 			"children": [
-				1
+				101,
+				17,
+				1,
+				102
 			]
 		}
 	]
