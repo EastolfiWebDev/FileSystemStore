@@ -9,14 +9,14 @@ var gulpJsdoc2md = require("gulp-jsdoc-to-markdown");
 var conventionalChangelog = require("gulp-conventional-changelog");
 
 gulp.task("doc:api:full", function () {
-    return jsdoc2md.render({ files: "lib/**/*.js" })
+    return jsdoc2md.render({ files: "src/**/*.js" })
         .then(function(output) {
             return fs.writeFileSync("api/index.md", output);
         });
 });
 
 gulp.task("doc:api:files", function () {
-    return gulp.src(["lib/FileSystemStore.js"])         // CHANGE: Put your documented files
+    return gulp.src(["src/FileSystemStore.js"])         // CHANGE: Put your documented files
         .pipe(gulpJsdoc2md(/*{ template: fs.readFileSync("./readme.hbs", "utf8") }*/))
         .on("error", function (err) {
             gutil.log(gutil.colors.red("jsdoc2md failed"), err.message);
@@ -34,10 +34,8 @@ gulp.task("doc:app", function (cb) {
             target: "es5",
     		module: "commonjs",
     		moduleResolution: "node",
-    // 		sourceMap: true,
     		experimentalDecorators: true,
     		emitDecoratorMetadata: true,
-    // 		lib: [ "es2015", "dom" ],
     		noImplicitAny: false,
     		suppressImplicitAnyIndexErrors: true,
     		
@@ -46,15 +44,9 @@ gulp.task("doc:app", function (cb) {
     		json: "doc/out.json",
     		
     		name: "FileSystemStore",
-    		// theme: "",
-    		// plugins: ["", ""],
     		ignoreCompilerErrors: false,
     		version: true
         }));
-    
-    // var config = require("../../jsdoc.conf.json");
-    // gulp.src(["./src/**/*.js"], {read: false})
-    //     .pipe(jsdoc(config, cb));
 });
 
 gulp.task("changelog", function () {
