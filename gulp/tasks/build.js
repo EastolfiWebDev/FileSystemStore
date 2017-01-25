@@ -1,5 +1,5 @@
 var gulp = require("gulp");
-var del = require("del");
+// var del = require("del");
 // var babel = require("gulp-babel");
 var ts = require("gulp-typescript");
 // var minify = require("gulp-minify");
@@ -8,20 +8,28 @@ var sourcemaps = require("gulp-sourcemaps");
 // var source = require("vinyl-source-stream");
 // var buffer = require("vinyl-buffer");
 
-gulp.task("clean:lib", function () {
-    return del([
-        "lib/**/*.js"
-    ]);
-});
-
 var tsProject = ts.createProject("tsconfig.json");
-
-gulp.task("build:app", ["clean:lib"], function () {
+gulp.task("build:source", function () {
     return gulp.src("src/**/*.ts")
         .pipe(sourcemaps.init())
         .pipe(tsProject()).js
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest("lib"));
+        .pipe(gulp.dest("./src"));
+});
+
+var tsProjectIndex = ts.createProject("tsconfig.json");
+gulp.task("build:index", function () {
+    return gulp.src("index.ts")
+        .pipe(sourcemaps.init())
+        .pipe(tsProjectIndex()).js
+        .pipe(sourcemaps.write("."))
+        .pipe(gulp.dest("."));
+});
+
+gulp.task("build:app", ["build:source", "build:index"]);
+
+gulp.task("watch:app", ["build:app"], function () {
+    gulp.watch(["./src/**/*.ts", "./index.ts"], ["build:app"]);
 });
 
 // gulp.task("bundle:app", ["build:app"], function() {

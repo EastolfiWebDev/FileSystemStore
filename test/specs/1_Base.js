@@ -1,8 +1,15 @@
 var expect = require("chai").expect,
     fs = require("fs"),
     rimraf = require("rimraf"),
-    MongoPortable = require("mongo-portable"),
-    FileSystemStore = require("../lib/FileSystemStore.js");
+    MongoPortable = require("mongo-portable");
+
+var FileSystemStore;
+    
+if (!!process.env.test_coverage) {
+    FileSystemStore = require("../../test/coverage/lib/JSW-Logger.js").FileSystemStore;
+} else {
+    FileSystemStore = require("../../index.js").FileSystemStore;
+}
 
 const DDBB_NAME = "test_ddbb";
 const COLL_NAME = "test_collection";

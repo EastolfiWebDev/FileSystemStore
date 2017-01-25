@@ -14,10 +14,10 @@
  * @license MIT Licensed
  */
 
-import * as _           from "lodash";
-import * as fs          from "file-system";
-import * as Promise     from "promise";
-import * as Logger      from "jsw-logger";
+import * as _                   from "lodash";
+import * as fs                  from "file-system";
+import * as Promise             from "promise";
+import { JSWLogger as Logger }  from "jsw-logger";
 
 class Options {
     ddbb_path: String;
@@ -543,4 +543,4 @@ class FileSystemStore {
     }
 }
     
-export = FileSystemStore;
+export { FileSystemStore };

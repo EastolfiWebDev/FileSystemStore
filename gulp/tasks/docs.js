@@ -68,7 +68,7 @@ gulp.task("changelog", function () {
     }, {    // CHANGE: Put your github repository info
         host: "https://github.com",
         owner: "eastolfi",
-        repository: "https://github.com/eastolfi"
+        repository: "FileSystemStore"
     }))
     .pipe(gulp.dest("./"));
 });
