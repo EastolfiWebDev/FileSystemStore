@@ -1,1 +1,1 @@
-{"version":3,"sources":["index.ts"],"names":[],"mappings":";AAAA,yDAAwD;AAE/C,4DAAe","file":"index.js","sourcesContent":["import { FileSystemStore } from \"./src/FileSystemStore\";\n\nexport { FileSystemStore };"]}
+{"version":3,"file":"index.js","sourceRoot":"","sources":["index.ts"],"names":[],"mappings":";;AAAA,yDAAwD;AAE/C,0BAFA,iCAAe,CAEA"}

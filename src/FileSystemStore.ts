@@ -564,27 +564,27 @@ export class FileSystemStore {
      **********/
     // TODO
     ensureIndex(event){
-        this.logger.debug('#ensureIndex');
+        this.logger.throw('#ensureIndex');
     }
     
     // TODO
     backup(event){
-        this.logger.debug('#backup');
+        this.logger.throw('#backup');
     }
     
     // TODO
     backups(event){
-        this.logger.debug('#backups');
+        this.logger.throw('#backups');
     }
     
     // TODO
     removeBackup(event){
-        this.logger.debug('#removeBackup');
+        this.logger.throw('#removeBackup');
     }
     
     // TODO
     restore(event){
-        this.logger.debug('#restore');
+        this.logger.throw('#restore');
     }
 }
     
