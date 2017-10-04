@@ -4,6 +4,9 @@
 // https://github.com/TypeStrong/typedoc
 // http://typedoc.org/guides/usage/
 
+// http://definitelytyped.org/guides/best-practices.html
+// https://github.com/Microsoft/TypeScript/wiki/Coding-guidelines
+
 /**
  * @file FileSystemStore.js - File System Store for persistence with MongoPortable ({@link https://github.com/EastolfiWebDev/MongoPortable}), 
  *  a portable MongoDB-like module.
@@ -19,21 +22,21 @@ import * as fs                  from "file-system";
 import * as Promise             from "promise";
 import { JSWLogger as Logger }  from "jsw-logger";
 
-class Options {
-    ddbb_path: String;
-    collection_extension: String;
-    sync: boolean;
-    log: Object;
+// class Options {
+//     ddbb_path: String;
+//     collection_extension: String;
+//     sync: boolean;
+//     log: Object;
     
-    constructor(options?) {
-        if (options) {
-            if (options.ddbb_path) this.ddbb_path = options.ddbb_path;
-            if (options.collection_extension) this.collection_extension = options.collection_extension;
-            if (_.isBoolean(options.sync)) this.sync = options.sync;
-            if (options.log) this.ddbb_path = options.log;
-        }
-    }
-}
+//     constructor(options?: any) {
+//         if (options) {
+//             if (options.ddbb_path) this.ddbb_path = options.ddbb_path;
+//             if (options.collection_extension) this.collection_extension = options.collection_extension;
+//             if (_.isBoolean(options.sync)) this.sync = options.sync;
+//             if (options.log) this.ddbb_path = options.log;
+//         }
+//     }
+// }
 
 /**
  * FileSystemStore
@@ -50,18 +53,26 @@ class Options {
  * @param {Boolean} [options.sync=true] - Set it false to make all the file access asynchronous. (Currently only sync=true is supported)
  * @param {Boolean} [options.collection_extension="json"] - The extension of the collection files. (Currently only "json" is supported)
  */
-class FileSystemStore {
+export class FileSystemStore {
     private logger: Logger;
-    private defaultOptions: Options = new Options({
+    private defaultOptions: any = {
         ddbb_path: 'db',
         collection_extension: 'json',
         sync: false
-    });
+    };
+    // private defaultOptions: Options = new Options({
+    //     ddbb_path: 'db',
+    //     collection_extension: 'json',
+    //     sync: false
+    // });
     
-    options: Options = new Options();
+    options: any = {};
+    // options: Options = new Options();
     
-    constructor(options: Options = new Options()) {
-        this.options = _.assign(this.defaultOptions, options);
+    constructor(options?: any/*Options = new Options()*/) {
+        // if (!options) options = new Options();
+        // this.options = _.assign(this.defaultOptions, options);
+        this._initOptions(options);
         
         // Create a new Logger instance with the logging options, if received 
         if (this.options.log) {
@@ -80,13 +91,26 @@ class FileSystemStore {
     /***************
      *   PRIVATE   *
      ***************/
+     
+    private _initOptions(options: any = {}) {
+        this.options = _.assign(this.defaultOptions, options);
+        
+        // if (options) {
+        //     if (options.ddbb_path) this.ddbb_path = options.ddbb_path;
+        //     if (options.collection_extension) this.collection_extension = options.collection_extension;
+        //     if (_.isBoolean(options.sync)) this.sync = options.sync;
+        //     if (options.log) this.ddbb_path = options.log;
+        // }
+    }
     
-    private handleError(error: Error) {
+    private handleError(error: Error): Error {
         this.logger.throw(error);
+        
+        return error;
     }
     
     // TODO: Recursive
-    private ensureDirectorySync(path: String = "", root: String = this.options.ddbb_path): String & Promise<String> {
+    private ensureDirectorySync(path: string = "", root: string = this.options.ddbb_path): string | Error{
         let dirPath = `${root}/${path}`;
         
         try {
@@ -98,142 +122,142 @@ class FileSystemStore {
         }
     }
     
-    private ensureDirectory(path: String, root: String = this.options.ddbb_path): String & Promise<String> {
+    private ensureDirectory(path: string, root: string = this.options.ddbb_path): Promise<string> {
         let dirPath = `${root}/${path}`;
         
         return new Promise((resolve, reject) => {
-            if (this.options.sync) {
-                return this.ensureDirectorySync(path, root);
-            } else {
-                fs.mkdir(dirPath, (error) => {
-                    if (error) {
-                        reject(error);
-                    } else {
-                        resolve(dirPath);
-                    }
-                });
-            }
+            fs.mkdir(dirPath, (error) => {
+                if (error) {
+                    reject(new Error(error));
+                } else {
+                    resolve(dirPath);
+                }
+            });
         });
     }
     
-    private existsFile(filename: String): boolean & Promise<boolean> {
-        var exists = false;
+    private existsFileSync(filename: string): boolean {
+        let exists = false;
         
-        if (this.options.sync) {
-            try {
-                let file = fs.readFileSync(filename);  
+        try {
+            let file = fs.readFileSync(filename);  
+            
+            if (!_.isNil(file)) {
+                let stats = fs.statSync(filename);
                 
-                if (!_.isNil(file)) {
-                    var stats = fs.statSync(filename);
-                    
-                    exists = stats.isFile();
+                exists = stats.isFile();
+            }
+        } catch (error) {
+            this.logger.debug(`File "${filename}" doesn't exist`);
+        } finally {
+            return exists;
+        }
+    }
+    
+    private existsFile(filename: string): Promise<boolean> {
+        return new Promise((resolve, reject) => {
+            fs.readFile(filename, (error, file) => {
+                if (error || _.isNil(file)) {
+                    reject(error || new Error(`File "${filename}" doesn't exist`));
+                } else {
+                    fs.stat(filename, (error, stats) => {
+                        if (error) {
+                            reject(error);
+                        } else {
+                            resolve(stats.isFile());
+                        }
+                    });
                 }
-            } catch (error) {
-                this.logger.debug(`File "${filename}" doesn't exist`);
-            } finally {
-                return exists;
-            }
-        } else {
-            return new Promise((resolve, reject) => {
-                fs.readFile(filename, (error, file) => {
-                    if (error || _.isNil(file)) {
-                        reject(error || new Error(`File "${filename}" doesn't exist`));
-                    } else {
-                        fs.stat(filename, (error, stats) => {
-                            if (error) {
-                                reject(error);
-                            } else {
-                                resolve(stats.isFile());
-                            }
-                        });
-                    }
-                });
             });
+        });
+        
+        
+    }
+    
+    private writeFileSync(path: string, content: string = ""): boolean {
+        try {
+            fs.writeFileSync(path, content);
+            
+            return true;
+        } catch(error) {
+            this.handleError(error);
+            
+            return false;
         }
     }
     
-    private createFile(path: String): boolean & Promise<boolean> {
-        return this.writeFile(path);
-    }
-    
-    private writeFile(path: String, content: String = ""): boolean & Promise<boolean> {
-        if (this.options.sync) {
-            try {
-                fs.writeFileSync(path, content);
-                
-                return true;
-            } catch(error) {
-                this.handleError(error);
-                
-                return false;
-            }
-        } else {
-            return new Promise((resolve, reject) => {
-                fs.writeFile(path, content, error => {
-                    if (error) {
-                        reject(error);
-                    } else {
-                        resolve(true);
-                    }
-                });
+    private writeFile(path: string, content: string = ""): Promise<boolean> {
+        return new Promise((resolve, reject) => {
+            fs.writeFile(path, content, error => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(true);
+                }
             });
-        }
+        });
     }
     
-    private persist(collectionPath: String, documents: Object[]): boolean & Promise<boolean> {
+    private persistSync(collectionPath: string, documents: object[]): boolean {
         let docs = "";
         
         for (let i = 0; i < documents.length; i++) {
             docs += JSON.stringify(documents[i]) + "\n";
         }
         
-        if (this.options.sync) {
-            let persisted = this.writeFile(collectionPath, docs);
+        let persisted = this.writeFileSync(collectionPath, docs);
     
-            if (persisted) {
-                this.logger.debug("Documents persisted in the file system");
-            } else {
-                this.logger.debug("Documents not persisted in the file system");
-            }
-            
-            return persisted;
+        if (persisted) {
+            this.logger.debug("Documents persisted in the file system");
         } else {
-            return new Promise((resolve, reject) => {
-                this.writeFile(collectionPath, docs)
-                    .then(persisted => {
-                        this.logger.debug("Documents persisted in the file system");
-                        
-                        resolve(true);
-                    })
-                    .catch(error => {
-                        this.logger.debug("Documents not persisted in the file system");
-                        
-                        reject(error);
-                    });
+            this.logger.debug("Documents not persisted in the file system");
+        }
+        
+        return persisted;
+    }
+    
+    private persist(collectionPath: string, documents: object[]): Promise<boolean> {
+        let docs = "";
+        
+        for (let i = 0; i < documents.length; i++) {
+            docs += JSON.stringify(documents[i]) + "\n";
+        }
+        
+        return new Promise((resolve, reject) => {
+            this.writeFile(collectionPath, docs)
+            .then(persisted => {
+                this.logger.debug("Documents persisted in the file system");
+                
+                resolve(true);
+            })
+            .catch(error => {
+                this.logger.debug("Documents not persisted in the file system");
+                
+                reject(error);
             });
+        });
+    }
+    
+    private readFileSync(path: string): object | Error {
+        try {
+            return fs.readFileSync(path);
+        } catch(error) {
+            return this.handleError(error);
         }
     }
     
-    private readFile(path: String): Object & Promise<Object> {
-        if (this.options.sync) {
-            try {
-                return fs.readFileSync(path);
-            } catch(error) {
-                return this.handleError(error);
-            }
-        } else {
-            return new Promise((resolve, reject) => {
-                fs.readFile(path, (error, file) => {
-                    if (error || _.isNil(file)) {
-                        reject(error || new Error(`File "${path}" doesn't exist`));
-                    } else {
-                        this.logger.debug(`Collection "${path}" readed from the file system`);
-                        
-                        resolve(file);
-                    }
-                });
+    private readFile(path: string): Promise<object> {
+        return new Promise((resolve, reject) => {
+            fs.readFile(path, (error, file) => {
+                if (error || _.isNil(file)) {
+                    reject(error || new Error(`File "${path}" doesn't exist`));
+                } else {
+                    this.logger.debug(`Collection "${path}" readed from the file system`);
+                    
+                    resolve(file);
+                }
             });
-        }
+        });
     }
     
     /***************
@@ -250,7 +274,7 @@ class FileSystemStore {
      *
      * @return {String} - The path of the file
      */
-    getCollectionPath(ddbb_name: String, coll_name: String): String {
+    getCollectionPath(ddbb_name: string, coll_name: string): string {
         if (_.isNil(ddbb_name)) throw new Error("Parameter 'ddbb_name' is required");
         if (_.isNil(coll_name)) throw new Error("Parameter 'coll_name' is required");
         
@@ -275,14 +299,14 @@ class FileSystemStore {
      * 
      * @return {boolean|Promise<boolean>} - True if the collection was created
      */
-    createCollection(event): boolean & Promise<boolean> {
+    createCollection(event): boolean | Promise<boolean> {
         this.logger.debug('#createCollection');
         
         var coll_path = this.getCollectionPath(event.collection.fullName.split('.')[0], event.collection.name);
         
         if (this.options.sync) {
             if (!this.existsFile(coll_path)) {
-                return this.createFile(coll_path);
+                return this.writeFileSync(coll_path);
             }
         } else {
             return new Promise((resolve, reject) => {
@@ -315,13 +339,20 @@ class FileSystemStore {
      * 
      * @return {boolean|Promise<boolean>} - True if the collection was inserted
      */
-    insert(event): boolean & Promise<boolean> {
+    insert(event): boolean | Promise<boolean> {
         this.logger.debug('#insert');
         
-        return this.persist(
-            this.getCollectionPath(event.collection.fullName.split('.')[0], event.collection.name),
-            event.collection.docs
-        );
+        if (this.options.sync) {
+            return this.persistSync(
+                this.getCollectionPath(event.collection.fullName.split('.')[0], event.collection.name),
+                event.collection.docs
+            );
+        } else {
+            return this.persist(
+                this.getCollectionPath(event.collection.fullName.split('.')[0], event.collection.name),
+                event.collection.docs
+            );
+        }
     }
     
     // TODO
@@ -353,7 +384,7 @@ class FileSystemStore {
      * 
      * @return {Object|Promise<Object>} - An object with the document and indexes
      */
-    find(event): Object & Promise<Object> {
+    find(event): object | Promise<object> {
         this.logger.debug('#find');
         
         let parseLines = (file, cb?: Function) => {
@@ -383,7 +414,7 @@ class FileSystemStore {
         };
         
         if (this.options.sync) {
-            let file = this.readFile(this.getCollectionPath(event.collection.fullName.split('.')[0], event.collection.name));
+            let file = this.readFileSync(this.getCollectionPath(event.collection.fullName.split('.')[0], event.collection.name));
             
             parseLines(file);
         } else {
@@ -450,7 +481,7 @@ class FileSystemStore {
      * 
      * @return {Object|Promise<Object>} - An object with the document and indexes
      */
-    findOne (event): Object & Promise<Object> {
+    findOne (event): object | Promise<object> {
         this.logger.debug('#findOne');
         
         // FIXME When we can do a line-per-line file search, change this
@@ -477,13 +508,20 @@ class FileSystemStore {
      * 
      * @return {boolean|Promise<boolean>} - True if the documents were updated
      */
-    update(event): boolean & Promise<boolean>  {
+    update(event): boolean | Promise<boolean>  {
         this.logger.debug('#update');
         
-        return this.persist(
-            this.getCollectionPath(event.collection.fullName.split('.')[0], event.collection.name),
-            event.collection.docs
-        );
+        if (this.options.sync) {
+            return this.persistSync(
+                this.getCollectionPath(event.collection.fullName.split('.')[0], event.collection.name),
+                event.collection.docs
+            );
+        } else {
+            return this.persist(
+                this.getCollectionPath(event.collection.fullName.split('.')[0], event.collection.name),
+                event.collection.docs
+            );
+        }
     }
     
     /**********
@@ -505,13 +543,20 @@ class FileSystemStore {
      * 
      * @return {boolean|Promise<boolean>} - True if the documents were removed
      */
-    remove(event): boolean & Promise<boolean> {
+    remove(event): boolean | Promise<boolean> {
         this.logger.debug('#remove');
         
-        return this.persist(
-            this.getCollectionPath(event.collection.fullName.split('.')[0], event.collection.name),
-            event.collection.docs
-        );
+        if (this.options.sync) {
+            return this.persistSync(
+                this.getCollectionPath(event.collection.fullName.split('.')[0], event.collection.name),
+                event.collection.docs
+            );
+        } else {
+            return this.persist(
+                this.getCollectionPath(event.collection.fullName.split('.')[0], event.collection.name),
+                event.collection.docs
+            );
+        }
     }
     
     /**********
@@ -543,4 +588,4 @@ class FileSystemStore {
     }
 }
     
-export { FileSystemStore };
+// export { FileSystemStore };
