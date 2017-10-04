@@ -3,9 +3,10 @@ import { expect } from "chai";
 const fs = require("fs");
 const rimraf = require("rimraf");
 import { MongoPortable } from "mongo-portable";
+import { JSWLogger } from "jsw-logger";
 
-import { FileSystemStore } from "../../index";
-// import { FileSystemStore } from "../../index";
+//import { FileSystemStore } from "../../index";
+let FileSystemStore = null;
 
 export class TestHelper {
     public static DDBB_NAME = "test_ddbb";
@@ -13,6 +14,10 @@ export class TestHelper {
     public static DDBB_PATH = "data";
     public static DDBB_PATH_DEF = "db";
     
+	static setupHelper(lib: any) {
+		FileSystemStore = lib;
+	}
+	
     static buildCollectionPath() {
         return `${TestHelper.DDBB_PATH}/${TestHelper.DDBB_NAME}/${TestHelper.COLL_NAME}.json`;
     }
@@ -28,7 +33,10 @@ export class TestHelper {
     static createStore() {
         return new FileSystemStore({
             ddbb_path: TestHelper.DDBB_PATH,
-            sync: true
+            sync: true,
+			log: {
+				hideAllLogs: true
+			}
         });
     }
     
@@ -39,6 +47,8 @@ export class TestHelper {
             
         let db = new MongoPortable(TestHelper.DDBB_NAME, { log: {} });
         
+		JSWLogger.__dropInstance();
+		
         db.addStore(TestHelper.createStore());
         
         return db;

@@ -2,12 +2,15 @@ import "mocha";
 import { expect } from "chai";
 import { MongoPortable } from "mongo-portable";
 
-import { TestHelper } from "./test.helper";
+import { TestHelper } from "../helper/test.helper";
 import { FileSystemStore } from "../../index";
-// import { FileSystemStore } from "../../index";
 
 var db = null;
 describe("FileSystemStore", function() {
+	before(function() {
+		TestHelper.setupHelper(FileSystemStore);
+	});
+	
     after(function() {
         TestHelper.clearDataDir();
     });
@@ -44,6 +47,52 @@ describe("FileSystemStore", function() {
             TestHelper.assertDir(TestHelper.DDBB_PATH, true, 0);
         });
     });
+	
+	describe("#Utils", function() {
+		describe("- getCollectionPath", function() {
+			it("should fail if no 'ddbb_name' is provided", function() {
+				let store = new FileSystemStore();
+				let thrown = false;
+				
+				try {
+					store.getCollectionPath(null, "collection");
+				} catch (error) {
+					expect(error).to.exist;
+					thrown = true;
+				}
+				
+				expect(thrown).to.be.true;
+			});
+			it("should fail if no 'coll_name' is provided", function() {
+				let store = new FileSystemStore();
+				let thrown = false;
+				
+				try {
+					store.getCollectionPath("database", null);
+				} catch (error) {
+					expect(error).to.exist;
+					thrown = true;
+				}
+				
+				expect(thrown).to.be.true;
+			});
+			it("should work", function() {
+				let store = new FileSystemStore();
+				let thrown = false;
+				let path = null;
+				
+				try {
+					path = store.getCollectionPath("database", "collection");
+				} catch (error) {
+					expect(error).to.exist;
+					thrown = true;
+				}
+				
+				expect(thrown).to.be.false;
+				expect(path).to.exist;
+			});
+		});
+	});
     
     describe("#Collections", function() {
         before(function() {
@@ -183,36 +232,88 @@ describe("FileSystemStore", function() {
             });
         });
     });
-    
-    describe.skip("#Backups", function() {
-        describe.skip("#Create", function() {
-            it("should have the dependencies ready", function() {
-                expect(MongoPortable).to.exist;
-            });
+	
+	describe("#Backups", function() {
+        describe("- backup", function() {
+            it("should not be implemented", function() {
+				let store = new FileSystemStore();
+				let thrown = false;
+				
+				try {
+					store.backup(null);
+				} catch (error) {
+					expect(error).to.exist;
+					thrown = true;
+				}
+				
+				expect(thrown).to.be.true;
+			});
         });
         
-        describe.skip("#Read", function() {
-            it("should have the dependencies ready", function() {
-                expect(MongoPortable).to.exist;
-            });
+        describe("- backups", function() {
+            it("should not be implemented", function() {
+				let store = new FileSystemStore();
+				let thrown = false;
+				
+				try {
+					store.backups(null);
+				} catch (error) {
+					expect(error).to.exist;
+					thrown = true;
+				}
+				
+				expect(thrown).to.be.true;
+			});
         });
         
-        describe.skip("#Update", function() {
-            it("should have the dependencies ready", function() {
-                expect(MongoPortable).to.exist;
-            });
+        describe("- removeBackup", function() {
+            it("should not be implemented", function() {
+				let store = new FileSystemStore();
+				let thrown = false;
+				
+				try {
+					store.removeBackup(null);
+				} catch (error) {
+					expect(error).to.exist;
+					thrown = true;
+				}
+				
+				expect(thrown).to.be.true;
+			});
         });
         
-        describe.skip("#Delete", function() {
-            it("should have the dependencies ready", function() {
-                expect(MongoPortable).to.exist;
-            });
+        describe("- restore", function() {
+            it("should not be implemented", function() {
+				let store = new FileSystemStore();
+				let thrown = false;
+				
+				try {
+					store.restore(null);
+				} catch (error) {
+					expect(error).to.exist;
+					thrown = true;
+				}
+				
+				expect(thrown).to.be.true;
+			});
         });
     });
     
-    describe.skip("#Others", function() {
-        it("should have the dependencies ready", function() {
-            expect(MongoPortable).to.exist;
+    describe("#Others", function() {
+        describe("- ensureIndex", function() {
+            it("should not be implemented", function() {
+                let store = new FileSystemStore();
+				let thrown = false;
+				
+				try {
+					store.ensureIndex(null);
+				} catch (error) {
+					expect(error).to.exist;
+					thrown = true;
+				}
+				
+				expect(thrown).to.be.true;
+            });
         });
     });
 });
