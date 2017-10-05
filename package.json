@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "docs": "gulp doc",
+    "typedoc": "typedoc",
     "build": "tsc -p ./tsconfig.json",
     "build.watch": "tsc -p ./tsconfig.json -w",
     "test.old": "gulp test",
@@ -81,6 +82,7 @@
     "mongo-portable": "^1.4.0",
     "require-dir": "^0.3.2",
     "rimraf": "^2.6.2",
-    "run-sequence": "^2.2.0"
+    "run-sequence": "^2.2.0",
+    "typedoc": "^0.8.0"
   }
 }
