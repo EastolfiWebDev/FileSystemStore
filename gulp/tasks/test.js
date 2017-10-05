@@ -59,10 +59,10 @@ gulp.task("coveralls", function (cb) {
     });
 });
 
-// gulp.task("publish:coveralls", ["coveralls"], function() {
-//     return gulp.src("test/coverage/coverage-dist.lcov")
-//         .pipe(coveralls());
-// });
+gulp.task("publish:coveralls", ["coveralls"], function() {
+    return gulp.src("test/coverage/coverage-dist.lcov")
+		.pipe(coveralls());
+});
 
 gulp.task("test:app", ["build:app"], function () { 
     // return gulp.src("test/specs/*.js", {read: false})
