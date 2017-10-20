@@ -7,20 +7,14 @@
   "license": "MIT",
   "scripts": {
     "docs": "gulp doc",
-    "typedoc": "typedoc",
     "build": "tsc -p ./tsconfig.json",
     "build.watch": "tsc -p ./tsconfig.json -w",
-    "test.old": "gulp test",
     "test": "mocha test/**/*.spec.ts",
     "test.coverage": "nyc mocha test/**/*.spec.ts",
-    "test.coverage2": "nyc gulp test:app2",
-    "test.coveralls": "nyc npm run test | coveralls",
-    "generate": "npm run test && npm run build",
+    "test.coveralls": "nyc mocha test/**/*.spec.ts | coveralls",
+    "generate": "npm run test && npm run build && npm run docs",
     "release": "gulp release",
-    "depcheck": "depcheck",
-    "test2": "node ./node_modules/mocha/bin/mocha -r ts-node/register './test/**/*.spec.ts'",
-    "cover2": "node ./node_modules/nyc/bin/nyc.js ./node_modules/mocha/bin/mocha -r ts-node/register './test/unit/FileSystemStore.specs.ts'",
-    "clear2": "rm -rf .nyc_output/ && rm -rf coverage/ && rm -rf node_modules/"
+    "depcheck": "depcheck"
   },
   "repository": {
     "type": "git",
@@ -48,13 +42,14 @@
       "ts-node/register"
     ],
     "reporter": [
-      "json",
-      "html"
+      "lcov",
+	  "text-summary"
     ],
     "produceSourceMap": true,
     "sourceMap": true,
     "instrument": true,
-    "all": true
+    "all": true,
+    "report-dir": "test/coverage"
   },
   "dependencies": {
     "@types/mocha": "^2.2.41",
@@ -73,8 +68,10 @@
   },
   "devDependencies": {
     "coveralls": "^3.0.0",
+    "depcheck": "^0.6.7",
     "gulp": "^3.9.1",
     "gulp-conventional-changelog": "^1.1.6",
+    "gulp-coveralls": "^0.1.4",
     "gulp-jsdoc-to-markdown": "^1.2.2",
     "gulp-rename": "^1.2.2",
     "gulp-typedoc": "^2.1.0",
