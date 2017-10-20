@@ -1,0 +1,5 @@
+--compilers ts:ts-node/register,tsx:ts-node/register
+--require tsconfig-paths/register
+--require source-map-support/register
+--full-trace
+test/**/*.spec.ts
